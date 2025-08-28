@@ -1,0 +1,387 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { GraduationCap, ArrowLeft, CheckCircle, Phone, Mail, MapPin, Users, Award, Heart } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
+
+const CadastroInteresse = () => {
+  const [formData, setFormData] = useState({
+    studentName: '',
+    parentName: '',
+    email: '',
+    phone: '',
+    segment: '',
+    currentYear: '',
+    currentSchool: '',
+    message: ''
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Aqui você integraria com um backend real
+    setIsSubmitted(true);
+    toast({
+      title: "Cadastro realizado com sucesso!",
+      description: "Nossa equipe entrará em contato em breve para agendar sua visita.",
+    });
+  };
+
+  const openWhatsApp = () => {
+    window.open('https://wa.me/5511999999999?text=Olá! Acabei de fazer meu cadastro de interesse na Escola Aggregare e gostaria de agendar uma visita.', '_blank');
+  };
+
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-section-bg flex items-center justify-center px-4">
+        <Card className="max-w-2xl w-full shadow-xl">
+          <CardHeader className="text-center">
+            <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle className="text-primary-foreground" size={40} />
+            </div>
+            <CardTitle className="text-3xl font-bold text-foreground mb-2">
+              Cadastro Realizado!
+            </CardTitle>
+            <p className="text-muted-foreground">
+              Obrigado pelo seu interesse na Escola Aggregare
+            </p>
+          </CardHeader>
+          <CardContent className="text-center space-y-6">
+            <div className="space-y-4">
+              <p className="text-foreground leading-relaxed">
+                Recebemos suas informações com sucesso! Nossa equipe pedagógica entrará 
+                em contato em breve para agendar uma visita à escola e esclarecer todas as suas dúvidas.
+              </p>
+              
+              <div className="bg-primary/5 rounded-lg p-6 space-y-4">
+                <h4 className="font-semibold text-foreground flex items-center justify-center">
+                  <Users className="mr-2 text-primary" size={20} />
+                  Próximos Passos:
+                </h4>
+                <div className="space-y-3 text-sm text-muted-foreground">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold">1</div>
+                    <span>Entraremos em contato em até 24 horas</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold">2</div>
+                    <span>Agendaremos uma visita à escola</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold">3</div>
+                    <span>Apresentaremos nossa proposta pedagógica</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                onClick={openWhatsApp}
+                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+              >
+                <Phone className="mr-2" size={18} />
+                Agendar Visita Agora
+              </Button>
+              <Link to="/">
+                <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                  <ArrowLeft className="mr-2" size={18} />
+                  Voltar ao Site
+                </Button>
+              </Link>
+            </div>
+
+            {/* Contato Direto */}
+            <div className="border-t border-border pt-6">
+              <h4 className="font-semibold text-foreground mb-4">Ou entre em contato diretamente:</h4>
+              <div className="grid sm:grid-cols-3 gap-4 text-sm">
+                <div className="flex flex-col items-center space-y-2">
+                  <Phone className="text-primary" size={24} />
+                  <span className="text-muted-foreground">(11) 99999-9999</span>
+                </div>
+                <div className="flex flex-col items-center space-y-2">
+                  <Mail className="text-primary" size={24} />
+                  <span className="text-muted-foreground">contato@aggregare.edu.br</span>
+                </div>
+                <div className="flex flex-col items-center space-y-2">
+                  <MapPin className="text-primary" size={24} />
+                  <span className="text-muted-foreground">Rua da Educação, 123</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-section-bg py-20">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-6">
+            <ArrowLeft className="mr-2" size={20} />
+            Voltar ao site
+          </Link>
+          
+          <Badge className="bg-secondary text-secondary-foreground text-lg px-6 py-2 mb-4">
+            <GraduationCap className="mr-2" size={20} />
+            Matrículas Abertas 2026
+          </Badge>
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Cadastro de Interesse
+          </h1>
+          
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Preencha o formulário abaixo para demonstrar interesse na Escola Aggregare. 
+            Nossa equipe entrará em contato para agendar uma visita e esclarecer todas as suas dúvidas.
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Formulário */}
+            <div className="lg:col-span-2">
+              <Card className="shadow-xl">
+                <CardHeader>
+                  <CardTitle className="text-2xl font-bold text-foreground">
+                    Informações do Aluno e Responsável
+                  </CardTitle>
+                  <p className="text-muted-foreground">
+                    Todos os campos marcados com * são obrigatórios
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Dados do Aluno */}
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-semibold text-foreground border-b border-border pb-2">
+                        Dados do Aluno
+                      </h3>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="studentName">Nome Completo do Aluno *</Label>
+                        <Input
+                          id="studentName"
+                          value={formData.studentName}
+                          onChange={(e) => handleInputChange('studentName', e.target.value)}
+                          placeholder="Nome completo do aluno"
+                          required
+                        />
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label>Segmento de Interesse *</Label>
+                          <Select onValueChange={(value) => handleInputChange('segment', value)}>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Selecione o segmento" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="fundamental1">Ensino Fundamental I (1º ao 5º ano)</SelectItem>
+                              <SelectItem value="fundamental2">Ensino Fundamental II (6º ao 9º ano)</SelectItem>
+                              <SelectItem value="medio">Ensino Médio (1º ao 3º ano)</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <Label htmlFor="currentYear">Ano/Série Pretendida para 2026 *</Label>
+                          <Select onValueChange={(value) => handleInputChange('currentYear', value)}>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Selecione o ano" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="1ano">1º Ano</SelectItem>
+                              <SelectItem value="2ano">2º Ano</SelectItem>
+                              <SelectItem value="3ano">3º Ano</SelectItem>
+                              <SelectItem value="4ano">4º Ano</SelectItem>
+                              <SelectItem value="5ano">5º Ano</SelectItem>
+                              <SelectItem value="6ano">6º Ano</SelectItem>
+                              <SelectItem value="7ano">7º Ano</SelectItem>
+                              <SelectItem value="8ano">8º Ano</SelectItem>
+                              <SelectItem value="9ano">9º Ano</SelectItem>
+                              <SelectItem value="1medio">1º Médio</SelectItem>
+                              <SelectItem value="2medio">2º Médio</SelectItem>
+                              <SelectItem value="3medio">3º Médio</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="currentSchool">Escola Atual (opcional)</Label>
+                        <Input
+                          id="currentSchool"
+                          value={formData.currentSchool}
+                          onChange={(e) => handleInputChange('currentSchool', e.target.value)}
+                          placeholder="Nome da escola onde o aluno estuda atualmente"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Dados do Responsável */}
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-semibold text-foreground border-b border-border pb-2">
+                        Dados do Responsável
+                      </h3>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="parentName">Nome Completo do Responsável *</Label>
+                        <Input
+                          id="parentName"
+                          value={formData.parentName}
+                          onChange={(e) => handleInputChange('parentName', e.target.value)}
+                          placeholder="Seu nome completo"
+                          required
+                        />
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="email">E-mail *</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => handleInputChange('email', e.target.value)}
+                            placeholder="seu@email.com"
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="phone">Telefone/WhatsApp *</Label>
+                          <Input
+                            id="phone"
+                            value={formData.phone}
+                            onChange={(e) => handleInputChange('phone', e.target.value)}
+                            placeholder="(11) 99999-9999"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Mensagem Adicional */}
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Mensagem Adicional (opcional)</Label>
+                      <Textarea
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => handleInputChange('message', e.target.value)}
+                        placeholder="Conte-nos sobre suas expectativas, dúvidas ou qualquer informação adicional que julgar importante..."
+                        rows={4}
+                      />
+                    </div>
+
+                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-3">
+                      <GraduationCap className="mr-2" size={20} />
+                      Enviar Cadastro de Interesse
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Sidebar com informações */}
+            <div className="space-y-6">
+              {/* Por que escolher */}
+              <Card className="shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-lg font-bold text-foreground flex items-center">
+                    <Award className="mr-3 text-primary" size={20} />
+                    Por que Aggregare?
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex items-start space-x-3">
+                      <Heart className="text-primary flex-shrink-0 mt-1" size={16} />
+                      <div>
+                        <div className="font-medium text-foreground text-sm">Valores Cristãos</div>
+                        <div className="text-xs text-muted-foreground">Formação integral do caráter</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <Award className="text-secondary flex-shrink-0 mt-1" size={16} />
+                      <div>
+                        <div className="font-medium text-foreground text-sm">98% Aprovação ENEM</div>
+                        <div className="text-xs text-muted-foreground">Excelência acadêmica comprovada</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <Users className="text-primary flex-shrink-0 mt-1" size={16} />
+                      <div>
+                        <div className="font-medium text-foreground text-sm">25+ Anos de Tradição</div>
+                        <div className="text-xs text-muted-foreground">Experiência e inovação</div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Contato Rápido */}
+              <Card className="shadow-lg bg-primary text-primary-foreground">
+                <CardHeader>
+                  <CardTitle className="text-lg font-bold flex items-center">
+                    <Phone className="mr-3" size={20} />
+                    Contato Direto
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-sm opacity-90">
+                    Prefere falar conosco diretamente?
+                  </p>
+                  <Button 
+                    onClick={openWhatsApp}
+                    className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                  >
+                    <Phone className="mr-2" size={16} />
+                    WhatsApp: (11) 99999-9999
+                  </Button>
+                  <div className="space-y-2 text-sm opacity-90">
+                    <div className="flex items-center space-x-2">
+                      <Mail size={14} />
+                      <span>contato@aggregare.edu.br</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <MapPin size={14} />
+                      <span>Rua da Educação, 123</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* ACSI Partner */}
+              <Card className="shadow-lg">
+                <CardContent className="pt-6 text-center">
+                  <div className="text-3xl mb-2">🏆</div>
+                  <h4 className="font-semibold text-foreground mb-2">Parceiro ACSI Brasil</h4>
+                  <p className="text-xs text-muted-foreground">
+                    Padrão internacional de qualidade educacional cristã
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CadastroInteresse;
