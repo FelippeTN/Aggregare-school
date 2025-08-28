@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, BookOpen, Users, Trophy } from "lucide-react";
-import studentsImage from "@/assets/students-studying.jpg";
+import { AboutCarousel } from "./Carousel";
 
 const About = () => {
   return (
@@ -38,11 +38,7 @@ const About = () => {
           </div>
           
           <div className="relative">
-            <img 
-              src={studentsImage} 
-              alt="Estudantes da Escola Aggregare" 
-              className="rounded-2xl shadow-xl w-full"
-            />
+            <AboutCarousel />
           </div>
         </div>
 
