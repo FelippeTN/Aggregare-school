@@ -20,12 +20,12 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Escola <span className="text-secondary">Aggregare</span>
+            Escola <span className="text-cyan-blue">Aggregare</span>
           </h1>
           
           <div className="text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">
-            <span className="text-secondary font-semibold">Tradição e Inovação</span> com{" "}
-            <span className="text-secondary font-semibold">Excelência Acadêmica</span>
+            <span className="text-cyan-blue font-semibold">Tradição e Inovação</span> com{" "}
+            <span className="text-cyan-blue font-semibold">Excelência Acadêmica</span>
             <br />
             a partir de princípios e valores cristãos
           </div>
@@ -34,7 +34,7 @@ const Hero = () => {
             <Link to="/cadastro-interesse">
               <Button 
                 size="lg" 
-                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 text-lg px-8 py-4 shadow-lg"
+                className="bg-cyan-blue text-cyan-blue-foreground hover:bg-cyan-blue/90 text-black text-lg px-8 py-4 shadow-lg"
               >
                 <GraduationCap className="mr-2" size={24} />
                 Matrículas Abertas 2026
@@ -43,7 +43,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-white text-black hover:bg-white hover:text-primary text-lg px-8 py-4"
+              className="border-white text-black hover:bg-white/90 hover:text-primary text-lg px-8 py-4"
               onClick={() => {
                 const element = document.getElementById('sobre');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -57,24 +57,24 @@ const Hero = () => {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-4">
                 <GraduationCap className="text-secondary-foreground" size={32} />
               </div>
-              <div className="text-2xl font-bold text-secondary">25+</div>
+              <div className="text-2xl font-bold text-cyan-blue">25+</div>
               <div className="text-sm opacity-90">Anos de Tradição</div>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="text-secondary-foreground" size={32} />
               </div>
-              <div className="text-2xl font-bold text-secondary">1500+</div>
+              <div className="text-2xl font-bold text-cyan-blue">1500+</div>
               <div className="text-sm opacity-90">Alunos Formados</div>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="text-secondary-foreground" size={32} />
               </div>
-              <div className="text-2xl font-bold text-secondary">98%</div>
+              <div className="text-2xl font-bold text-cyan-blue">98%</div>
               <div className="text-sm opacity-90">Aprovação</div>
             </div>
           </div>

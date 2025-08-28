@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border z-50">
+    <header className="fixed top-0 left-10 right-10 bg-background/90 backdrop-blur-sm border rounded-b-2xl z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center space-x-2">
@@ -89,25 +89,25 @@ const Header = () => {
             <nav className="flex flex-col space-y-4 p-6">
               <button 
                 onClick={() => scrollToSection('sobre')}
-                className="text-left text-foreground hover:text-primary transition-colors"
+                className="text-left text-foreground hover:text-dark-blue transition-colors"
               >
                 Quem Somos
               </button>
               <button 
                 onClick={() => scrollToSection('segmentos')}
-                className="text-left text-foreground hover:text-primary transition-colors"
+                className="text-left text-foreground hover:text-dark-blue  transition-colors"
               >
                 Segmentos
               </button>
               <button 
                 onClick={() => scrollToSection('proposta')}
-                className="text-left text-foreground hover:text-primary transition-colors"
+                className="text-left text-foreground hover:text-dark-blue  transition-colors"
               >
                 Proposta Pedagógica
               </button>
               <button 
                 onClick={() => scrollToSection('eventos')}
-                className="text-left text-foreground hover:text-primary transition-colors"
+                className="text-left text-foreground hover:text-dark-blue  transition-colors"
               >
                 Eventos
               </button>
@@ -115,13 +115,13 @@ const Header = () => {
                 <Button 
                   variant="outline" 
                   onClick={openWhatsApp}
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="border-dark-blue  text-dark-blue hover:bg-dark-blue  hover:text-primary-foreground"
                 >
                   Agende uma Visita
                 </Button>
                 <Link to="/cadastro-interesse">
                   <Button 
-                    className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary"
+                    className="bg-gradient-to-r from-dark-blue  to-dark-blue /90 hover:from-dark-blue/90 hover:to-dark-blue "
                   >
                     Matricule-se Já
                   </Button>
