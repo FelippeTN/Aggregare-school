@@ -128,11 +128,10 @@ const CadastroInteresse = () => {
   }
 
   return (
-    <div className="min-h-screen bg-section-bg py-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-section-bg py-3">
         {/* Header */}
-        <div className="text-center mb-12">
-          <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-6">
+        <div className="flex items-center justify-between mb-8 px-4">
+          <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-6 mr-6">
             <ArrowLeft className="mr-2" size={20} />
             Voltar ao site
           </Link>
@@ -141,6 +140,9 @@ const CadastroInteresse = () => {
             <GraduationCap className="mr-2" size={20} />
             Matrículas Abertas 2026
           </Badge>
+        </div>
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
           
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Cadastro de Interesse
