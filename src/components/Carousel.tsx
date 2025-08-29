@@ -76,10 +76,10 @@ export function AboutCarousel() {
             </div>
           </CarouselItem>
         ))}
-      </CarouselContent>
+      </CarouselContent >
       
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className=" hover:bg-cyan-blue"/>
+      <CarouselNext className=" hover:bg-cyan-blue"/>
     </Carousel>
   );
 }

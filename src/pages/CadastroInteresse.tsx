@@ -136,7 +136,7 @@ const CadastroInteresse = () => {
             Voltar ao site
           </Link>
           
-          <Badge className="bg-secondary text-secondary-foreground text-lg px-6 py-2 mb-4">
+          <Badge className="bg-cyan-blue text-secondary-foreground text-lg px-6 py-2 mb-4">
             <GraduationCap className="mr-2" size={20} />
             Matrículas Abertas 2026
           </Badge>
@@ -290,7 +290,7 @@ const CadastroInteresse = () => {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-3">
+                    <Button type="submit" className="w-full bg-dark-blue hover:bg-dark-blue/90 text-lg py-3">
                       <GraduationCap className="mr-2" size={20} />
                       Enviar Cadastro de Interesse
                     </Button>
@@ -337,7 +337,7 @@ const CadastroInteresse = () => {
               </Card>
 
               {/* Contato Rápido */}
-              <Card className="shadow-lg bg-primary text-primary-foreground">
+              <Card className="shadow-lg bg-dark-blue text-primary-foreground">
                 <CardHeader>
                   <CardTitle className="text-lg font-bold flex items-center">
                     <Phone className="mr-3" size={20} />
@@ -350,7 +350,7 @@ const CadastroInteresse = () => {
                   </p>
                   <Button 
                     onClick={openWhatsApp}
-                    className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                    className="w-full bg-cyan-blue text-secondary-foreground hover:bg-cyan-blue/90"
                   >
                     <Phone className="mr-2" size={16} />
                     WhatsApp: (11) 99999-9999
