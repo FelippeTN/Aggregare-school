@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Importe o tipo 'CarouselApi' do próprio componente do shadcn
 import { type CarouselApi } from "@/components/ui/carousel"; 
 
 import {
@@ -12,9 +11,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import image1 from "@/assets/students-studying.jpg";
-import image2 from "@/assets/kids-school1.jpg";
-import image3 from "@/assets/kids-school2.jpg"; 
+import image1 from "@/assets/kids_playing2.jpg";
+import image2 from "@/assets/students2.jpg";
+import image3 from "@/assets/kid_studying.jpg"; 
 const images = [image1, image2, image3];
 
 export function AboutCarousel() {
@@ -77,9 +76,8 @@ export function AboutCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent >
-      
-      <CarouselPrevious className=" hover:bg-cyan-blue"/>
-      <CarouselNext className=" hover:bg-cyan-blue"/>
+      <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-black rounded-full p-2 shadow-md hover:shadow-lg transition">&#8592;</CarouselPrevious>
+      <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-black rounded-full p-2 shadow-md hover:shadow-lg transition">&#8594;</CarouselNext>
     </Carousel>
   );
 }

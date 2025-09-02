@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Users, Award } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-school.jpg";
+import heroImage from "@/assets/kids_playing.jpg";
 
 const Hero = () => {
   return (
