@@ -85,7 +85,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg">
+          <div className="lg:hidden absolute top-full mt-2 left-0 right-0 bg-background/90 border-b border-border rounded-lg shadow-lg">
             <nav className="flex flex-col space-y-4 p-6">
               <button 
                 onClick={() => scrollToSection('sobre')}
@@ -115,13 +115,13 @@ const Header = () => {
                 <Button 
                   variant="outline" 
                   onClick={openWhatsApp}
-                  className="border-dark-blue  text-dark-blue hover:bg-dark-blue  hover:text-primary-foreground"
+                  className="border-dark-blue text-dark-blue hover:bg-dark-blue hover:text-primary-foreground"
                 >
                   Agende uma Visita
                 </Button>
                 <Link to="/cadastro-interesse">
                   <Button 
-                    className="bg-gradient-to-r from-dark-blue  to-dark-blue /90 hover:from-dark-blue/90 hover:to-dark-blue "
+                    className="bg-gradient-to-r from-dark-blue to-dark-blue /90 hover:from-dark-blue/90 hover:to-dark-blue "
                   >
                     Matricule-se Já
                   </Button>
