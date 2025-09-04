@@ -1,9 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AboutCarousel } from "./Carousel";
-import cardPhoto1 from "@/assets/teen.jpg";
+import cardPhoto1 from "@/assets/teen_praying.jpg";
 import cardPhoto2 from "@/assets/kid_studying5.jpg";
 import cardPhoto3 from "@/assets/smiling.jpg";
-import cardPhoto4 from "@/assets/festival.jpg";
+import cardPhoto4 from "@/assets/festival_smiling.jpg";
 
 const About = () => {
   return (
