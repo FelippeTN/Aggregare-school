@@ -1,6 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, BookOpen, Users, Trophy } from "lucide-react";
 import { AboutCarousel } from "./Carousel";
+import cardPhoto1 from "@/assets/teen.jpg";
+import cardPhoto2 from "@/assets/kid_studying5.jpg";
+import cardPhoto3 from "@/assets/smiling.jpg";
+import cardPhoto4 from "@/assets/festival.jpg";
 
 const About = () => {
   return (
@@ -43,11 +46,13 @@ const About = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="text-center p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardContent className="pt-6">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="text-primary" size={32} />
-              </div>
+          <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <img 
+              src={cardPhoto1}
+              alt="Alunos engajados em atividades que refletem valores cristãos"
+              className="w-full h-40 object-cover"
+            />
+            <CardContent className="p-6">
               <h4 className="text-lg font-semibold text-foreground mb-2">
                 Valores Cristãos
               </h4>
@@ -57,11 +62,13 @@ const About = () => {
             </CardContent>
           </Card>
 
-          <Card className="text-center p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardContent className="pt-6">
-              <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="text-secondary" size={32} />
-              </div>
+          <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <img 
+              src={cardPhoto2}
+              alt="Estudantes em uma sala de aula moderna e tecnológica"
+              className="w-full h-40 object-cover"
+            />
+            <CardContent className="p-6">
               <h4 className="text-lg font-semibold text-foreground mb-2">
                 Excelência Acadêmica
               </h4>
@@ -71,11 +78,13 @@ const About = () => {
             </CardContent>
           </Card>
 
-          <Card className="text-center p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardContent className="pt-6">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="text-primary" size={32} />
-              </div>
+          <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <img 
+              src={cardPhoto3}
+              alt="Interação entre pais, alunos e professores em um evento escolar"
+              className="w-full h-40 object-cover"
+            />
+            <CardContent className="p-6">
               <h4 className="text-lg font-semibold text-foreground mb-2">
                 Comunidade Forte
               </h4>
@@ -85,11 +94,13 @@ const About = () => {
             </CardContent>
           </Card>
 
-          <Card className="text-center p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardContent className="pt-6">
-              <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trophy className="text-secondary" size={32} />
-              </div>
+          <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <img 
+              src={cardPhoto4}
+              alt="Fachada tradicional da escola com elementos de tecnologia moderna"
+              className="w-full h-40 object-cover"
+            />
+            <CardContent className="p-6">
               <h4 className="text-lg font-semibold text-foreground mb-2">
                 Tradição & Inovação
               </h4>
