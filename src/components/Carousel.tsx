@@ -14,7 +14,8 @@ import {
 import image1 from "@/assets/kids_playing2.jpg";
 import image2 from "@/assets/students2.jpg";
 import image3 from "@/assets/kid_studying.jpg"; 
-const images = [image1, image2, image3];
+import image4 from "@/assets/kid2.jpg";
+const images = [image1, image2, image3, image4];
 
 export function AboutCarousel() {
   const [api, setApi] = React.useState<CarouselApi>();
