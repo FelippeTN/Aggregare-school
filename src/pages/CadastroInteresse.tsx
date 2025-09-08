@@ -88,13 +88,6 @@ const CadastroInteresse = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={openWhatsApp}
-                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
-              >
-                <Phone className="mr-2" size={18} />
-                Agendar Visita Agora
-              </Button>
               <Link to="/">
                 <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                   <ArrowLeft className="mr-2" size={18} />
@@ -135,11 +128,6 @@ const CadastroInteresse = () => {
             <ArrowLeft className="mr-2" size={20} />
             Voltar ao site
           </Link>
-          
-          <Badge className="bg-cyan-blue text-secondary-foreground text-lg px-6 py-2 mb-4">
-            <GraduationCap className="mr-2" size={20} />
-            Matrículas Abertas 2026
-          </Badge>
         </div>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">

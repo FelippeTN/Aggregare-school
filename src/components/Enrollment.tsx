@@ -14,10 +14,6 @@ const Enrollment = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge className="bg-secondary text-secondary-foreground text-lg px-6 py-2 mb-4">
-            <GraduationCap className="mr-2" size={20} />
-            Matrículas Abertas 2026
-          </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Matricule-se Já!
           </h2>
@@ -25,6 +21,11 @@ const Enrollment = () => {
             Garante já a vaga do seu filho na melhor escola da região. 
             Preencha o formulário abaixo e nossa equipe entrará em contato.
           </p>
+          <Link to="/cadastro-interesse">
+            <Button className="bg-gradient-to-r from-cyan-blue to-cyan-blue/90 hover:from-cyan-blue/90 hover:to-cyan-blue text-lg mt-10">
+              Matrículas Abertas 2026
+            </Button>
+          </Link>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">

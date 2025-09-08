@@ -120,7 +120,7 @@ const Pedagogy = () => {
                       {project.icon}
                     </div>
                   </div>
-                  <Badge className="bg-secondary text-secondary-foreground">
+                  <Badge className="bg-cyan-blue text-secondary-foreground">
                     {project.highlight}
                   </Badge>
                 </div>
