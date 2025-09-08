@@ -118,15 +118,15 @@ const Segments = () => {
               </h3>
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">98%</div>
+                  <div className="text-3xl font-bold text-dark-blue mb-2">98%</div>
                   <div className="text-muted-foreground">Taxa de Aprovação no ENEM</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-secondary mb-2">85%</div>
+                  <div className="text-3xl font-bold text-cyan-blue mb-2">85%</div>
                   <div className="text-muted-foreground">Alunos em Universidades Públicas</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">92%</div>
+                  <div className="text-3xl font-bold text-dark-blue mb-2">92%</div>
                   <div className="text-muted-foreground">Satisfação das Famílias</div>
                 </div>
               </div>
