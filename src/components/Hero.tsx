@@ -1,9 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Users, Award } from "lucide-react";
 import { Link } from "react-router-dom";
+import { CountUp } from "countup.js";
 import heroImage from "@/assets/kids_playing.jpg";
+import { useEffect } from "react";
 
 const Hero = () => {
+  // Animate numbers on component mount
+  useEffect(() => {
+    const options = { duration: 7, useEasing: true, suffix: "+" };
+
+    const anos = document.getElementById("anos");
+    const alunos = document.getElementById("alunos");
+    const aprovacao = document.getElementById("aprovacao");
+
+    if (anos) new CountUp(anos, 25, options).start();
+    if (alunos) new CountUp(alunos, 1500, options).start();
+    if (aprovacao) new CountUp(aprovacao, 98, { ...options, suffix: "%" }).start();
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -60,21 +75,21 @@ const Hero = () => {
               <div className="w-16 h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-4">
                 <GraduationCap className="text-secondary-foreground" size={32} />
               </div>
-              <div className="text-2xl font-bold text-cyan-blue">25+</div>
+              <div className="text-2xl font-bold text-cyan-blue" id="anos">0</div>
               <div className="text-sm opacity-90">Anos de Tradição</div>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="text-secondary-foreground" size={32} />
               </div>
-              <div className="text-2xl font-bold text-cyan-blue">1500+</div>
+              <div className="text-2xl font-bold text-cyan-blue" id="alunos">0</div>
               <div className="text-sm opacity-90">Alunos Formados</div>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="text-secondary-foreground" size={32} />
               </div>
-              <div className="text-2xl font-bold text-cyan-blue">98%</div>
+              <div className="text-2xl font-bold text-cyan-blue" id="aprovacao">0</div>
               <div className="text-sm opacity-90">Aprovação</div>
             </div>
           </div>
