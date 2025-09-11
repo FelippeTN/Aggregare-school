@@ -6,7 +6,6 @@ import heroImage from "@/assets/kids_playing.jpg";
 import { useEffect } from "react";
 
 const Hero = () => {
-  // Animate numbers on component mount
   useEffect(() => {
     const options = { duration: 7, useEasing: true, suffix: "+" };
 

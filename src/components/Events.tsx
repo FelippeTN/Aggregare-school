@@ -1,6 +1,7 @@
+import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Heart, Award, BookOpen, Users, Star } from "lucide-react";
+import { Calendar, Heart, Award, BookOpen, Users } from "lucide-react";
 
 const Events = () => {
   const events = [
@@ -9,14 +10,8 @@ const Events = () => {
       subtitle: "Dia da Família na Escola",
       icon: <Users size={32} />,
       date: "Setembro",
-      description: "Um dia especial dedicado à integração entre família, escola e comunidade, fortalecendo os laços que formam nossa comunidade educativa.",
-      highlights: [
-        "Apresentações culturais dos alunos",
-        "Atividades interativas para toda família",
-        "Exposição de trabalhos acadêmicos",
-        "Confraternização e networking",
-        "Momentos de louvor e gratidão"
-      ],
+      description: "Um dia especial dedicado à integração entre família, escola e comunidade.",
+      image: "/src/assets/kids_playing2.jpg",
       color: "bg-blue-500",
       bgColor: "bg-blue-50"
     },
@@ -25,14 +20,8 @@ const Events = () => {
       subtitle: "Ação Social da Escola",
       icon: <Heart size={32} />,
       date: "Dezembro",
-      description: "Evento que mobiliza toda nossa comunidade escolar em ações de solidariedade, vivenciando na prática os valores cristãos que ensinamos.",
-      highlights: [
-        "Arrecadação para famílias carentes",
-        "Participação de toda comunidade escolar",
-        "Desenvolvimento da consciência social",
-        "Voluntariado e trabalho em equipe",
-        "Impacto positivo na sociedade"
-      ],
+      description: "Evento que mobiliza toda nossa comunidade escolar em ações de solidariedade.",
+      image: "/src/assets/kids_playing3.jpg",
       color: "bg-red-500",
       bgColor: "bg-red-50"
     },
@@ -41,14 +30,8 @@ const Events = () => {
       subtitle: "Feira de Iniciação Científica",
       icon: <Award size={32} />,
       date: "Outubro",
-      description: "Mostra científica onde nossos alunos apresentam projetos de pesquisa, desenvolvendo o pensamento científico e a capacidade de inovação.",
-      highlights: [
-        "Projetos de pesquisa interdisciplinares",
-        "Apresentações científicas dos alunos",
-        "Avaliação por banca especializada",
-        "Desenvolvimento do pensamento crítico",
-        "Preparação para olimpíadas científicas"
-      ],
+      description: "Mostra científica onde nossos alunos apresentam projetos de pesquisa inovadores.",
+      image: "/src/assets/technology-education.jpg",
       color: "bg-green-500",
       bgColor: "bg-green-50"
     },
@@ -57,14 +40,8 @@ const Events = () => {
       subtitle: "Feira Literária e Cultural",
       icon: <BookOpen size={32} />,
       date: "Agosto",
-      description: "Celebração da literatura e cultura, onde nossos alunos compartilham suas criações artísticas e literárias com toda a comunidade.",
-      highlights: [
-        "Exposição de obras literárias dos alunos",
-        "Apresentações teatrais e musicais",
-        "Saraus e recitais de poesia",
-        "Oficinas de criação artística",
-        "Valorização da cultura nacional"
-      ],
+      description: "Celebração da literatura e cultura com apresentações artísticas dos alunos.",
+      image: "/src/assets/students2.jpg",
       color: "bg-purple-500",
       bgColor: "bg-purple-50"
     }
@@ -85,46 +62,36 @@ const Events = () => {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {events.map((event, index) => (
-            <Card key={index} className={`${event.bgColor} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden`}>
-              <CardHeader className="relative pb-4">
-                <div className="flex items-start justify-between">
-                  <div className={`w-16 h-16 ${event.color} rounded-full flex items-center justify-center text-white shadow-lg`}>
-                    {event.icon}
-                  </div>
-                  <Badge variant="outline" className="flex items-center space-x-1">
-                    <Calendar size={14} />
-                    <span>{event.date}</span>
-                  </Badge>
-                </div>
-                <CardTitle className="text-2xl font-bold text-foreground">
-                  {event.title}
-                </CardTitle>
-                <p className={`text-sm font-medium ${event.color.replace('bg-', 'text-')}`}>
-                  {event.subtitle}
-                </p>
-              </CardHeader>
+            <div key={index} className="relative group">
+              <div className="absolute inset-0 rounded-xl overflow-hidden">
+                <img 
+                  src={event.image} 
+                  alt={event.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/40" />
+              </div>
               
-              <CardContent className="space-y-6">
-                <p className="text-muted-foreground leading-relaxed">
-                  {event.description}
-                </p>
+              <Card className="relative h-80 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                <CardHeader className="relative z-10">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`w-14 h-14 ${event.color} rounded-full flex items-center justify-center text-white shadow-xl backdrop-blur-sm`}>
+                      {event.icon}
+                    </div>
+                    <Badge variant="outline" className="bg-white/20 backdrop-blur-sm border-white/30 text-white">
+                      <Calendar size={14} />
+                      <span className="ml-1">{event.date}</span>
+                    </Badge>
+                  </div>
+                </CardHeader>
                 
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-foreground flex items-center">
-                    <Star size={18} className="mr-2 text-secondary" />
-                    Destaques do Evento:
-                  </h4>
-                  <ul className="space-y-2">
-                    {event.highlights.map((highlight, idx) => (
-                      <li key={idx} className="flex items-start text-sm text-muted-foreground">
-                        <div className={`w-2 h-2 ${event.color} rounded-full mt-2 mr-3 flex-shrink-0`}></div>
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
+                <CardContent className="relative z-10 flex-1 flex flex-col justify-end">
+                  <h3 className="text-2xl font-bold text-white mb-2">{event.title}</h3>
+                  <p className="text-gray-200 font-medium mb-3">{event.subtitle}</p>
+                  <p className="text-gray-300 leading-relaxed">{event.description}</p>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
 
