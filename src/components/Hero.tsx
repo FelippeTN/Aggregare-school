@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { GraduationCap, Users, Award } from "lucide-react";
+import { GraduationCap, Users, Award, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CountUp } from "countup.js";
 import heroImage from "@/assets/kids_playing.jpg";
@@ -93,6 +93,24 @@ const Hero = () => {
             </div>
           </div>
         </div>
+
+        </div>
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
+          <div 
+            className="cursor-pointer p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+            style={{
+              animation: 'bounce 2s infinite'
+            }}
+            onClick={() => {
+              const element = document.getElementById('sobre');
+              if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <ChevronDown 
+              className="text-white group-hover:text-cyan-blue transition-colors duration-300" 
+              size={28} 
+            />
+          </div>
       </div>
     </section>
   );
