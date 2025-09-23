@@ -197,15 +197,15 @@ const Enrollment = () => {
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Phone size={18} />
-                  <span>(11) 99999-9999</span>
+                  <span>(21) 97207-9493</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail size={18} />
-                  <span>contato@aggregare.edu.br</span>
+                  <span>secretaria@colegiocristaoaggregare.com.br</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin size={18} />
-                  <span>Rua da Educação, 123 - Centro</span>
+                  <span>Rua Professor Miguel Couto, 479, Icaraí, Niterói - RJ.</span>
                 </div>
               </CardContent>
             </Card>

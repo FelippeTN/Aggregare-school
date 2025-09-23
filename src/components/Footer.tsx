@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const openWhatsApp = () => {
-    window.open('https://wa.me/5511999999999?text=Olá! Gostaria de mais informações sobre a Escola Aggregare.', '_blank');
+    window.open('https://wa.me/5521972079493?text=Olá! Gostaria de mais informações sobre a Escola Aggregare.', '_blank');
   };
 
   const scrollToSection = (id: string) => {
@@ -86,19 +86,19 @@ const Footer = () => {
                 <MapPin className="text-cyan-blue flex-shrink-0 mt-1" size={18} />
                 <div>
                   <p className="text-primary-foreground/80">
-                    Rua da Educação, 123<br />
-                    Centro - São Paulo, SP<br />
-                    CEP: 01234-567
+                    Rua Professor Miguel Couto, 123<br />
+                    Icarai - Niterói, RJ<br />
+                    CEP: 24230-240
                   </p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="text-cyan-blue" size={18} />
-                <span className="text-primary-foreground/80">(11) 99999-9999</span>
+                <span className="text-primary-foreground/80">(21) 97207-9493</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="text-cyan-blue" size={18} />
-                <span className="text-primary-foreground/80">contato@aggregare.edu.br</span>
+                <Mail className="text-cyan-blue flex-shrink-0" size={18}/>
+                <span className="text-primary-foreground/80">secretaria@colegiocristaoaggregare.com.br</span>
               </div>
             </div>
           </div>
@@ -109,19 +109,25 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex space-x-4">
                 <a 
-                  href="#" 
-                  className="w-10 h-10 bg-cyan-blue/20 rounded-full flex items-center justify-center hover:bg-cyan-blue hover:text-cyan-blue-foreground transition-all"
-                >
-                  <Facebook size={20} />
-                </a>
-                <a 
-                  href="#" 
+                  href="https://www.instagram.com/colegioaggregare/"
+                  target="_blank"
+                  rel="noopener noreferrer" 
                   className="w-10 h-10 bg-cyan-blue/20 rounded-full flex items-center justify-center hover:bg-cyan-blue hover:text-cyan-blue-foreground transition-all"
                 >
                   <Instagram size={20} />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.facebook.com/colegioaggregare" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-cyan-blue/20 rounded-full flex items-center justify-center hover:bg-cyan-blue hover:text-cyan-blue-foreground transition-all"
+                >
+                  <Facebook size={20} />
+                </a>
+                <a 
+                  href="https://www.youtube.com/@colegioaggregare"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-cyan-blue/20 rounded-full flex items-center justify-center hover:bg-cyan-blue hover:text-cyan-blue-foreground transition-all"
                 >
                   <Youtube size={20} />
@@ -130,7 +136,7 @@ const Footer = () => {
               
               <Button 
                 onClick={openWhatsApp}
-                className="w-full bg-cyan-blue hover:bg-cyan-blue/90 text-cyan-blue-foreground"
+                className="w-full bg-cyan-blue hover:bg-cyan-blue/10 text-cyan-blue-foreground"
               >
                 <Phone className="mr-2" size={18} />
                 Fale Conosco
@@ -138,7 +144,7 @@ const Footer = () => {
               
               <Link to="/cadastro-interesse">
                 <Button 
-                className="bg-gradient-to-r from-dark-blue to-dark-blue/90 hover:from-dark-blue/90 hover:to-dark-blue"
+                className="w-full bg-cyan-blue hover:bg-cyan-blue/10 text-cyan-blue-foreground mt-2"
                 >
                   Matricule-se 2026
                 </Button>
@@ -156,7 +162,7 @@ const Footer = () => {
               © {new Date().getFullYear()} Escola Aggregare. Todos os direitos reservados.
             </p>
             <p className="text-primary-foreground/60 text-xs mt-1">
-              CNPJ: 12.345.678/0001-90 | Autorização de Funcionamento nº 123456
+              CNPJ: 11.369.387/0001-74 
             </p>
           </div>
           
@@ -173,9 +179,60 @@ const Footer = () => {
             <p className="text-primary-foreground/60 text-sm mb-4">Parceiro Oficial:</p>
             <div className="flex justify-center items-center space-x-4">
               <div className="bg-white/10 px-6 py-3 rounded-lg">
-                <span className="font-semibold text-cyan-blue">ACSI Brasil</span>
+                <span className="font-semibold text-cyan-blue"><a href="https://www.classapp.com.br/"
+                target="_blank"
+                rel="noopener noreferrer">Class App</a></span>
+                <div className="text-xs text-primary-foreground/60 mt-1">
+                 Agenda Escolar
+                </div>
+              </div>
+              <div className="bg-white/10 px-6 py-3 rounded-lg">
+                <span className="font-semibold text-cyan-blue"><a href="https://www.estuda.com/"
+                target="_blank"
+                rel="noopener noreferrer">Estuda.com</a></span>
+                <div className="text-xs text-primary-foreground/60 mt-1">
+                 Plataforma de Estudos
+                </div>
+              </div>
+              <div className="bg-white/10 px-6 py-3 rounded-lg">
+                <span className="font-semibold text-cyan-blue"><a href="https://www.bernoulli.com.br/"
+                target="_blank"
+                rel="noopener noreferrer">Bernoulli</a></span>
+                <div className="text-xs text-primary-foreground/60 mt-1">
+                  Material Didático
+                </div>
+              </div>
+              <div className="bg-white/10 px-6 py-3 rounded-lg">
+                <span className="font-semibold text-cyan-blue">
+                  <a href="https://www.acsi.org/"
+                  target="_blank"
+                  rel="noopener noreferrer">ACSI Brasil</a></span>
                 <div className="text-xs text-primary-foreground/60 mt-1">
                   Association of Christian Schools International
+                </div>
+              </div>
+              <div className="bg-white/10 px-6 py-3 rounded-lg">
+                <span className="font-semibold text-cyan-blue"><a href="https://sae.digital/"
+                target="_blank"
+                rel="noopener noreferrer">SAE Digital</a></span>
+                <div className="text-xs text-primary-foreground/60 mt-1">
+                  Sistema de Ensino
+                </div>
+              </div>
+              <div className="bg-white/10 px-6 py-3 rounded-lg">
+                <span className="font-semibold text-cyan-blue"><a href="https://evolucional.com.br/"
+                target="_blank"
+                rel="noopener noreferrer">Evolucional</a></span>
+                <div className="text-xs text-primary-foreground/60 mt-1">
+                 Análise de Desempenho
+                </div>
+              </div>
+              <div className="bg-white/10 px-6 py-3 rounded-lg">
+                <span className="font-semibold text-cyan-blue"><a href="https://gestaoescolaronline.com.br/"
+                target="_blank"
+                rel="noopener noreferrer">Acesso GEO</a></span>
+                <div className="text-xs text-primary-foreground/60 mt-1">
+                  Gestão Escolar
                 </div>
               </div>
             </div>
