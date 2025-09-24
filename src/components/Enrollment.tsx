@@ -78,7 +78,7 @@ const Enrollment = () => {
                   <Button 
                     variant="outline" 
                     onClick={openWhatsApp}
-                    className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
+                    className="border-dark-blue text-dark-blue hover:bg-dark-blue hover:text-dark-blue-foreground"
                     size="lg"
                   >
                     <Phone className="mr-2" size={18} />
@@ -109,7 +109,7 @@ const Enrollment = () => {
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-secondary rounded-full mt-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-dark-blue rounded-full mt-3 flex-shrink-0"></div>
                     <div>
                       <div className="font-medium text-foreground">Valores Cristãos</div>
                       <div className="text-sm text-muted-foreground">Formação integral do caráter</div>
@@ -123,7 +123,7 @@ const Enrollment = () => {
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-secondary rounded-full mt-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-dark-blue rounded-full mt-3 flex-shrink-0"></div>
                     <div>
                       <div className="font-medium text-foreground">Acompanhamento Individual</div>
                       <div className="text-sm text-muted-foreground">Cada aluno é único</div>
@@ -137,7 +137,7 @@ const Enrollment = () => {
             <Card className="shadow-lg">
               <CardHeader>
                 <CardTitle className="text-xl font-bold text-foreground flex items-center">
-                  <Clock className="mr-3 text-secondary" size={24} />
+                  <Clock className="mr-3 text-dark-blue" size={24} />
                   Processo de Matrícula
                 </CardTitle>
               </CardHeader>
@@ -174,7 +174,7 @@ const Enrollment = () => {
                   </div>
                   
                   <div className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-secondary text-secondary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                    <div className="w-8 h-8 bg-dark-blue text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                       4
                     </div>
                     <div>
@@ -197,15 +197,15 @@ const Enrollment = () => {
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Phone size={18} />
-                  <span>(11) 99999-9999</span>
+                  <span>(21) 97207-9493</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail size={18} />
-                  <span>contato@aggregare.edu.br</span>
+                  <span>secretaria@colegiocristaoaggregare.com.br</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin size={18} />
-                  <span>Rua da Educação, 123 - Centro</span>
+                  <span>Rua Professor Miguel Couto, 479, Icaraí, Niterói - RJ.</span>
                 </div>
               </CardContent>
             </Card>
