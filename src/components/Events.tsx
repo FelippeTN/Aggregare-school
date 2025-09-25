@@ -143,7 +143,7 @@ const Events = () => {
     <section id="eventos" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-black text-4xl md:text-5xl font-bold text-foreground mb-6 ">
             Nossos Eventos
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -180,7 +180,7 @@ const Events = () => {
                     </CardHeader>
                     
                     <CardContent className="relative z-10 flex-1 flex flex-col justify-end">
-                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-yellow-300 transition-colors">{event.title}</h3>
+                      <h3 className="text-2xl font-bold text-white mb-2">{event.title}</h3>
                       <p className="text-gray-200 font-medium mb-3">{event.subtitle}</p>
                       <p className="text-gray-300 leading-relaxed mb-4">{event.description}</p>
                       
@@ -199,7 +199,7 @@ const Events = () => {
                       </div>
                     </CardContent>
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
                   </Card>
                 </div>
               </DialogTrigger>
@@ -238,8 +238,8 @@ const Events = () => {
 
         <div className="text-center mt-16">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-primary/5 via-blue-50/50 to-purple-50/50 rounded-3xl p-8 border border-primary/10">
-              <Calendar className="text-primary mx-auto mb-4" size={48} />
+            <div className="bg-gradient-to-r from-dark-blue/5 via-blue-50/50 to-purple-50/50 rounded-3xl p-8 border border-dark-blue/10">
+              <Calendar className="text-dark-blue mx-auto mb-4" size={48} />
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 Calendário Anual de Eventos
               </h3>
@@ -254,7 +254,7 @@ const Events = () => {
                     <div className={`w-12 h-12 ${event.color} rounded-xl mx-auto mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
                       {React.cloneElement(event.icon, { size: 20 })}
                     </div>
-                    <div className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                    <div className="text-lg font-semibold text-foreground group-hover:text-dark-blue transition-colors">
                       {event.date}
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">

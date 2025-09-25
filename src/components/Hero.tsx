@@ -56,7 +56,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-white text-black hover:bg-white/90 hover:text-primary text-lg px-8 py-4"
+              className="border-white text-black hover:bg-white/90 hover:text-primary sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto"
               onClick={() => {
                 const element = document.getElementById('sobre');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
