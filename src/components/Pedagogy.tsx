@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DollarSign, Dna, FileText, Brain, CheckCircle, Star } from "lucide-react";
-import { PedagogyCarousel } from "./Carousel";
+import { PedagogyCarousel, PartnershipsCarousel } from "./Carousel";
 
 const Pedagogy = () => {
   const projects = [
@@ -45,15 +45,6 @@ const Pedagogy = () => {
       highlight: "Resultados comprovados"
     }
   ];
-
-  const partnerships = [
-    {
-      name: "ACSI Brasil",
-      description: "Association of Christian Schools International - Padrão internacional de qualidade educacional cristã",
-      logo: "🏆"
-    }
-  ];
-
   return (
     <section id="proposta" className="py-20 bg-section-bg">
       <div className="container mx-auto px-4">
@@ -156,19 +147,7 @@ const Pedagogy = () => {
         <div className="text-center">
           <h3 className="text-2xl font-bold text-foreground mb-8">Nossos Parceiros</h3>
           <div className="max-w-2xl mx-auto">
-            {partnerships.map((partner, index) => (
-              <Card key={index} className="p-6 shadow-lg">
-                <CardContent className="text-center">
-                  <div className="text-4xl mb-4">{partner.logo}</div>
-                  <h4 className="text-xl font-semibold text-foreground mb-2">
-                    {partner.name}
-                  </h4>
-                  <p className="text-muted-foreground">
-                    {partner.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+           <PartnershipsCarousel/>
           </div>
         </div>
       </div>
