@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DollarSign, Dna, FileText, Brain, CheckCircle, Star } from "lucide-react";
-import technologyImage from "@/assets/technology-education.jpg";
+import { PedagogyCarousel } from "./Carousel";
 
 const Pedagogy = () => {
   const projects = [
@@ -68,6 +68,9 @@ const Pedagogy = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="relative">
+            <PedagogyCarousel />
+          </div>
           <div className="space-y-8">
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
@@ -101,13 +104,6 @@ const Pedagogy = () => {
             </div>
           </div>
           
-          <div className="relative">
-            <img 
-              src={technologyImage} 
-              alt="Tecnologia Educacional Aggregare" 
-              className="rounded-2xl shadow-xl w-full"
-            />
-          </div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-16">

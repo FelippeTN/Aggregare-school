@@ -34,7 +34,7 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Colégio <span className="text-cyan-blue">Aggregare</span>
+            Colégio Cristão <span className="text-cyan-blue">Aggregare</span>
           </h1>
           
           <div className="text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">

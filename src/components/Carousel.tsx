@@ -15,11 +15,24 @@ import image1 from "@/assets/kids_playing2.jpg";
 import image2 from "@/assets/students2.jpg";
 import image3 from "@/assets/kid_studying.jpg"; 
 import image4 from "@/assets/kid2.jpg";
+
+import pedagogy_image1 from "@/assets/pedagogy.jpg";
+import pedagogy_image2 from "@/assets/pedagogy2.jpg";
+import pedagogy_image3 from "@/assets/pedagogy3.jpg";
+import pedagogy_image4 from "@/assets/pedagogy4.jpg";
+import pedagogy_image5 from "@/assets/pedagogy5.jpg";
+
 const images = [image1, image2, image3, image4];
+const pedagogy_images = [pedagogy_image1, pedagogy_image2, pedagogy_image3, pedagogy_image4, pedagogy_image5];
 
-export function AboutCarousel() {
+interface AutoplayCarouselProps {
+  images: string[];
+  autoplayInterval?: number;
+  className?: string;
+}
+
+function AutoplayCarousel({ images, autoplayInterval = 3000, className = "w-full" }: AutoplayCarouselProps) {
   const [api, setApi] = React.useState<CarouselApi>();
-
   const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const startAutoplay = React.useCallback(() => {
@@ -28,8 +41,8 @@ export function AboutCarousel() {
     
     intervalRef.current = setInterval(() => {
       api.scrollNext();
-    }, 3000); 
-  }, [api]);
+    }, autoplayInterval); 
+  }, [api, autoplayInterval]);
 
   const stopAutoplay = React.useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -56,7 +69,7 @@ export function AboutCarousel() {
       opts={{
         loop: true,
       }}
-      className="w-full"
+      className={className}
       onMouseEnter={stopAutoplay}
       onMouseLeave={startAutoplay}
     >
@@ -81,4 +94,12 @@ export function AboutCarousel() {
       <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-black rounded-full p-2 shadow-md hover:shadow-lg transition">&#8594;</CarouselNext>
     </Carousel>
   );
+}
+
+export function AboutCarousel() {
+  return <AutoplayCarousel images={images} />;
+}
+
+export function PedagogyCarousel() {
+  return <AutoplayCarousel images={pedagogy_images} />;
 }
