@@ -24,6 +24,7 @@ import pedagogy_image5 from "@/assets/pedagogy5.jpg";
 
 const images = [image1, image2, image3, image4];
 const pedagogy_images = [pedagogy_image1, pedagogy_image2, pedagogy_image3, pedagogy_image4, pedagogy_image5];
+
 interface Partnership {
   name: string;
   description: string;
@@ -49,6 +50,7 @@ interface AutoplayCarouselProps {
 }
 
 function AutoplayCarousel({ images, items, renderItem, autoplayInterval = 3000, className = "w-full" }: AutoplayCarouselProps) {
+
   const [api, setApi] = React.useState<CarouselApi>();
   const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
 
