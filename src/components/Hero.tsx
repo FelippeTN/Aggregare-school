@@ -20,7 +20,6 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage} 
@@ -30,87 +29,86 @@ const Hero = () => {
         <div className="absolute inset-0 bg-primary/80"></div>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Colégio <span className="text-cyan-blue">Aggregare</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+            Colégio Cristão <span className="text-cyan-blue">Aggregare</span>
           </h1>
           
-          <div className="text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">
+          <div className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
             <span className="text-cyan-blue font-semibold">Tradição e Inovação</span> com{" "}
             <span className="text-cyan-blue font-semibold">Excelência Acadêmica</span>
-            <br />
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
             a partir de princípios e valores cristãos
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Link to="/cadastro-interesse">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 px-4">
+            <Link to="/cadastro-interesse" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="bg-cyan-blue text-cyan-blue-foreground hover:bg-cyan-blue/90 text-black text-lg px-8 py-4 shadow-lg"
+                className="bg-cyan-blue text-cyan-blue-foreground hover:bg-cyan-blue/90 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg w-full sm:w-auto"
               >
-                <GraduationCap className="mr-2" size={24} />
+                <GraduationCap className="mr-2" size={20} />
                 Matrículas Abertas 2026
               </Button>
             </Link>
             <Button 
               size="lg" 
               variant="outline"
-              className="border-white text-black hover:bg-white/90 hover:text-primary text-lg px-8 py-4"
+              className="border-white text-black hover:bg-white/90 hover:text-primary sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto"
               onClick={() => {
                 const element = document.getElementById('sobre');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              <Users className="mr-2" size={24} />
+              <Users className="mr-2" size={20} />
               Conheça Nossa Escola
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto px-4">
             <div className="text-center">
-              <div className="w-16 h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                <GraduationCap className="text-secondary-foreground" size={32} />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <GraduationCap className="text-cyan-blue-foreground" size={28} />
               </div>
-              <div className="text-2xl font-bold text-cyan-blue" id="anos">0</div>
-              <div className="text-sm opacity-90">Anos de Tradição</div>
+              <div className="text-xl sm:text-2xl font-bold text-cyan-blue" id="anos">0</div>
+              <div className="text-xs sm:text-sm opacity-90">Anos de Tradição</div>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="text-secondary-foreground" size={32} />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Users className="text-cyan-blue-foreground" size={28} />
               </div>
-              <div className="text-2xl font-bold text-cyan-blue" id="alunos">0</div>
-              <div className="text-sm opacity-90">Alunos Formados</div>
+              <div className="text-xl sm:text-2xl font-bold text-cyan-blue" id="alunos">0</div>
+              <div className="text-xs sm:text-sm opacity-90">Alunos Formados</div>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="text-secondary-foreground" size={32} />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Award className="text-cyan-blue-foreground" size={28} />
               </div>
-              <div className="text-2xl font-bold text-cyan-blue" id="aprovacao">0</div>
-              <div className="text-sm opacity-90">Aprovação</div>
+              <div className="text-xl sm:text-2xl font-bold text-cyan-blue" id="aprovacao">0</div>
+              <div className="text-xs sm:text-sm opacity-90">Aprovação</div>
             </div>
           </div>
         </div>
-
+      </div>
+      
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-20">
+        <div 
+          className="cursor-pointer p-3 sm:p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+          style={{
+            animation: 'bounce 2s infinite'
+          }}
+          onClick={() => {
+            const element = document.getElementById('sobre');
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          <ChevronDown 
+            className="text-white group-hover:text-cyan-blue transition-colors duration-300" 
+            size={24} 
+          />
         </div>
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
-          <div 
-            className="cursor-pointer p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 group"
-            style={{
-              animation: 'bounce 2s infinite'
-            }}
-            onClick={() => {
-              const element = document.getElementById('sobre');
-              if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            <ChevronDown 
-              className="text-white group-hover:text-cyan-blue transition-colors duration-300" 
-              size={28} 
-            />
-          </div>
       </div>
     </section>
   );
