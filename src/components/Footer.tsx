@@ -18,7 +18,6 @@ const Footer = () => {
     <footer className="bg-dark-blue text-primary-foreground">
       <div className="container mx-auto px-4 py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {/* Logo e Descrição */}
           <div className="space-y-4 sm:space-y-6">
             <div className="flex items-center justify-center sm:justify-start space-x-2 bg-white p-4 sm:p-5 rounded-lg w-max mx-auto sm:mx-0">
               <img src={logo} alt="Logo do Colégio" className="h-12 w-13 sm:h-14 sm:w-15 object-contain" />
@@ -37,7 +36,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links Rápidos */}
           <div className="space-y-4 sm:space-y-6">
             <h4 className="text-lg sm:text-xl font-bold text-cyan-blue text-center sm:text-left">Links Rápidos</h4>
             <nav className="space-y-2 sm:space-y-3 text-center sm:text-left">
@@ -74,7 +72,6 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* Contato */}
           <div className="space-y-4 sm:space-y-6">
             <h4 className="text-lg sm:text-xl font-bold text-cyan-blue text-center sm:text-left">Contato</h4>
             <div className="space-y-3 sm:space-y-4">
@@ -99,7 +96,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Redes Sociais e CTA */}
           <div className="space-y-4 sm:space-y-6">
             <h4 className="text-lg sm:text-xl font-bold text-cyan-blue text-center sm:text-left">Conecte-se</h4>
             <div className="space-y-4">
@@ -135,7 +131,6 @@ const Footer = () => {
 
         <Separator className="my-6 sm:my-8 bg-dark-blue-foreground/20" />
 
-        {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-center md:text-left">
           <div>
             <p className="text-primary-foreground/60 text-xs sm:text-sm">
@@ -153,13 +148,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Parceiros */}
         <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-dark-blue-foreground/20">
           <div className="text-center">
             <p className="text-primary-foreground/60 text-sm mb-4">Parceiro Oficial:</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-3 sm:gap-4 max-w-full overflow-hidden">
               <div className="bg-white/10 px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-lg mx-auto w-full max-w-xs">
                 <span className="font-semibold text-cyan-blue text-sm sm:text-base"><a href="https://www.classapp.com.br/"
+
                 target="_blank"
                 rel="noopener noreferrer">Class App</a></span>
                 <div className="text-xs text-primary-foreground/60 mt-1">
