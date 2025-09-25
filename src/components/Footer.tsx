@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Heart } from "lucide-react";
-import { Link } from "react-router-dom";
+import logo from '../assets/logo.ico';
 
 const Footer = () => {
   const openWhatsApp = () => {
@@ -21,11 +20,8 @@ const Footer = () => {
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
           {/* Logo e Descrição */}
           <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 bg-cyan-blue rounded-lg flex items-center justify-center">
-                <span className="text-cyan-blue-foreground font-bold text-xl">A</span>
-              </div>
-              <span className="font-bold text-2xl">Aggregare</span>
+            <div className="flex items-center space-x-2 bg-white p-5 rounded-lg w-max">
+              <img src={logo} alt="Logo do Colégio" className="h-14 w-15 object-contain" />
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">
               Há mais de 25 anos formando cidadãos íntegros através da excelência acadêmica 
@@ -133,22 +129,6 @@ const Footer = () => {
                   <Youtube size={20} />
                 </a>
               </div>
-              
-              <Button 
-                onClick={openWhatsApp}
-                className="w-full bg-cyan-blue hover:bg-cyan-blue/10 text-cyan-blue-foreground"
-              >
-                <Phone className="mr-2" size={18} />
-                Fale Conosco
-              </Button>
-              
-              <Link to="/cadastro-interesse">
-                <Button 
-                className="w-full bg-cyan-blue hover:bg-cyan-blue/10 text-cyan-blue-foreground mt-2"
-                >
-                  Matricule-se 2026
-                </Button>
-              </Link>
             </div>
           </div>
         </div>

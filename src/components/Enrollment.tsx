@@ -22,7 +22,7 @@ const Enrollment = () => {
             Preencha o formulário abaixo e nossa equipe entrará em contato.
           </p>
           <Link to="/cadastro-interesse">
-            <Button className="bg-gradient-to-r from-cyan-blue to-cyan-blue/90 hover:from-cyan-blue/90 hover:to-cyan-blue text-lg mt-10">
+            <Button className="bg-dark-blue text-dark-blue-foreground hover:bg-dark-blue/90 text-white text-lg px-8 py-4 shadow-lg mt-3">
               Matrículas Abertas 2026
             </Button>
           </Link>
@@ -42,7 +42,7 @@ const Enrollment = () => {
             </CardHeader>
             <CardContent className="space-y-8">
               <div className="text-center space-y-6">
-                <div className="bg-primary/5 rounded-2xl p-8">
+                <div className="bg-dark-blue/5 rounded-2xl p-8">
                   <GraduationCap className="text-primary mx-auto mb-4" size={64} />
                   <h3 className="text-xl font-bold text-foreground mb-2">
                     Matrículas Abertas para 2026
@@ -55,7 +55,7 @@ const Enrollment = () => {
                   <div className="space-y-4">
                     <Link to="/cadastro-interesse">
                       <Button 
-                        className="w-full bg-primary hover:bg-primary/90 text-lg py-6 shadow-lg"
+                        className="w-full bg-dark-blue hover:bg-dark-blue/90 text-lg py-6 shadow-lg"
                         size="lg"
                       >
                         <GraduationCap className="mr-2" size={24} />
@@ -78,7 +78,7 @@ const Enrollment = () => {
                   <Button 
                     variant="outline" 
                     onClick={openWhatsApp}
-                    className="border-dark-blue text-dark-blue hover:bg-dark-blue hover:text-dark-blue-foreground"
+                    className="border-dark-blue text-dark-blue hover:bg-dark-blue/90 hover:text-white"
                     size="lg"
                   >
                     <Phone className="mr-2" size={18} />
@@ -102,7 +102,7 @@ const Enrollment = () => {
               <CardContent className="space-y-4">
                 <div className="grid gap-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-dark-blue rounded-full mt-3 flex-shrink-0"></div>
                     <div>
                       <div className="font-medium text-foreground">Excelência Acadêmica</div>
                       <div className="text-sm text-muted-foreground">98% de aprovação no ENEM</div>
@@ -116,7 +116,7 @@ const Enrollment = () => {
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-dark-blue rounded-full mt-3 flex-shrink-0"></div>
                     <div>
                       <div className="font-medium text-foreground">Metodologia Exclusiva</div>
                       <div className="text-sm text-muted-foreground">DNA Aggregare</div>
@@ -144,7 +144,7 @@ const Enrollment = () => {
               <CardContent className="space-y-4">
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                    <div className="w-8 h-8 bg-dark-blue text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                       1
                     </div>
                     <div>
@@ -154,7 +154,7 @@ const Enrollment = () => {
                   </div>
                   
                   <div className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                    <div className="w-8 h-8 bg-dark-blue text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                       2
                     </div>
                     <div>
@@ -164,7 +164,7 @@ const Enrollment = () => {
                   </div>
                   
                   <div className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                    <div className="w-8 h-8 bg-dark-blue text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                       3
                     </div>
                     <div>
@@ -187,7 +187,7 @@ const Enrollment = () => {
             </Card>
 
             {/* Contato */}
-            <Card className="shadow-lg bg-primary text-primary-foreground">
+            <Card className="shadow-lg bg-dark-blue text-primary-foreground">
               <CardHeader>
                 <CardTitle className="text-xl font-bold flex items-center">
                   <Phone className="mr-3" size={24} />
