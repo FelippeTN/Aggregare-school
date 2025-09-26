@@ -46,7 +46,7 @@ function ModalCarousel({ images, eventTitle }: ModalCarouselProps) {
 
   return (
     <div className="relative w-full max-w-4xl mx-auto">
-      <div className="relative h-[60vh] rounded-lg overflow-hidden bg-gray-100">
+      <div className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] rounded-lg overflow-hidden bg-gray-100">
         <img
           src={images[currentIndex]}
           alt={`${eventTitle} - Imagem ${currentIndex + 1}`}
@@ -55,26 +55,26 @@ function ModalCarousel({ images, eventTitle }: ModalCarouselProps) {
         
         <button
           onClick={goToPrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 hover:scale-110"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 hover:scale-110"
           disabled={images.length <= 1}
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={18} className="sm:w-6 sm:h-6" />
         </button>
         
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 hover:scale-110"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 hover:scale-110"
           disabled={images.length <= 1}
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={18} className="sm:w-6 sm:h-6" />
         </button>
 
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1 sm:space-x-2">
           {images.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
                 index === currentIndex
                   ? 'bg-white scale-125'
                   : 'bg-white/50 hover:bg-white/80'
@@ -83,7 +83,7 @@ function ModalCarousel({ images, eventTitle }: ModalCarouselProps) {
           ))}
         </div>
 
-        <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+        <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-black/50 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
           {currentIndex + 1} / {images.length}
         </div>
       </div>
@@ -140,19 +140,19 @@ const Events = () => {
   ];
 
   return (
-    <section id="eventos" className="py-20 bg-background">
+    <section id="eventos" className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-black text-4xl md:text-5xl font-bold text-foreground mb-6 ">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-black text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             Nossos Eventos
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
             Durante o ano letivo, promovemos eventos especiais que enriquecem a experiência 
             educativa e fortalecem a comunidade escolar.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {events.map((event, index) => (
             <Dialog key={index}>
               <DialogTrigger asChild>
@@ -166,34 +166,38 @@ const Events = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   </div>
                   
-                  <Card className="relative h-80 bg-transparent border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 hover:scale-[1.02]">
-                    <CardHeader className="relative z-10">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className={`w-16 h-16 ${event.color} rounded-xl flex items-center justify-center text-white shadow-2xl backdrop-blur-sm group-hover:scale-110 transition-transform duration-300`}>
-                          {event.icon}
+                  <Card className="relative h-72 sm:h-72 lg:h-80 bg-transparent border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 lg:hover:-translate-y-4 hover:scale-[1.01] lg:hover:scale-[1.02] overflow-hidden">
+                    <CardHeader className="relative z-10 p-4 sm:p-6 flex-shrink-0">
+                      <div className="flex items-start justify-between mb-3 sm:mb-4">
+                        <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 ${event.color} rounded-xl flex items-center justify-center text-white shadow-2xl backdrop-blur-sm group-hover:scale-110 transition-transform duration-300`}>
+                          <div className="text-xl sm:text-2xl lg:text-3xl">
+                            {React.cloneElement(event.icon, { size: undefined, className: "w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8" })}
+                          </div>
                         </div>
-                        <Badge variant="outline" className="bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 transition-colors">
-                          <Calendar size={14} />
+                        <Badge variant="outline" className="bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 transition-colors text-xs sm:text-sm">
+                          <Calendar size={12} className="sm:w-4 sm:h-4" />
                           <span className="ml-1">{event.date}</span>
                         </Badge>
                       </div>
                     </CardHeader>
                     
-                    <CardContent className="relative z-10 flex-1 flex flex-col justify-end">
-                      <h3 className="text-2xl font-bold text-white mb-2">{event.title}</h3>
-                      <p className="text-gray-200 font-medium mb-3">{event.subtitle}</p>
-                      <p className="text-gray-300 leading-relaxed mb-4">{event.description}</p>
+                    <CardContent className="relative z-10 flex-1 flex flex-col justify-end p-4 sm:p-6 pb-4 min-h-0">
+                      <div className="space-y-2">
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white line-clamp-2">{event.title}</h3>
+                        <p className="text-gray-200 font-medium text-sm sm:text-base line-clamp-1">{event.subtitle}</p>
+                        <p className="text-gray-300 leading-relaxed text-xs sm:text-sm line-clamp-2">{event.description}</p>
+                      </div>
                       
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 mt-3 sm:mt-4">
                         <Button 
                           variant="outline" 
                           size="sm"
-                          className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
+                          className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm text-xs sm:text-sm w-full sm:w-auto flex-shrink-0"
                         >
-                          <ImageIcon size={16} className="mr-2" />
-                          Ver Galeria ({event.images.length} fotos)
+                          <ImageIcon size={12} className="mr-1 sm:mr-2" />
+                          <span className="truncate">Ver Galeria ({event.images.length})</span>
                         </Button>
-                        <div className="text-sm text-gray-400">
+                        <div className="text-xs sm:text-sm text-gray-400 hidden sm:block">
                           Clique para ver mais
                         </div>
                       </div>
@@ -204,29 +208,29 @@ const Events = () => {
                 </div>
               </DialogTrigger>
               
-              <DialogContent className="max-w-6xl w-[90vw] h-[90vh] p-0 overflow-hidden">
-                <DialogHeader className="p-6 pb-2">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <DialogTitle className="text-2xl font-bold flex items-center gap-3">
-                        <div className={`w-10 h-10 ${event.color} rounded-lg flex items-center justify-center text-white`}>
-                          {React.cloneElement(event.icon, { size: 20 })}
+              <DialogContent className="max-w-6xl w-[95vw] sm:w-[90vw] h-[95vh] sm:h-[90vh] p-0 overflow-hidden">
+                <DialogHeader className="p-4 sm:p-6 pb-2">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+                    <div className="flex-1">
+                      <DialogTitle className="text-lg sm:text-2xl font-bold flex items-center gap-2 sm:gap-3">
+                        <div className={`w-8 h-8 sm:w-10 sm:h-10 ${event.color} rounded-lg flex items-center justify-center text-white`}>
+                          {React.cloneElement(event.icon, { size: undefined, className: "w-4 h-4 sm:w-5 sm:h-5" })}
                         </div>
-                        {event.title}
+                        <span className="line-clamp-2">{event.title}</span>
                       </DialogTitle>
-                      <p className="text-muted-foreground mt-1">{event.subtitle}</p>
+                      <p className="text-muted-foreground mt-1 text-sm sm:text-base">{event.subtitle}</p>
                     </div>
-                    <Badge variant="outline" className="flex items-center gap-1">
-                      <Calendar size={14} />
+                    <Badge variant="outline" className="flex items-center gap-1 text-xs sm:text-sm shrink-0">
+                      <Calendar size={12} className="sm:w-4 sm:h-4" />
                       {event.date}
                     </Badge>
                   </div>
                 </DialogHeader>
                 
-                <div className="flex-1 p-6 pt-2">
+                <div className="flex-1 p-4 sm:p-6 pt-2">
                   <ModalCarousel images={event.images} eventTitle={event.title} />
-                  <div className="mt-6 text-center">
-                    <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                  <div className="mt-4 sm:mt-6 text-center">
+                    <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto text-sm sm:text-base">
                       {event.description}
                     </p>
                   </div>
@@ -236,28 +240,28 @@ const Events = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16">
+        <div className="text-center mt-12 lg:mt-16">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-dark-blue/5 via-blue-50/50 to-purple-50/50 rounded-3xl p-8 border border-dark-blue/10">
-              <Calendar className="text-dark-blue mx-auto mb-4" size={48} />
-              <h3 className="text-2xl font-bold text-foreground mb-4">
+            <div className="bg-gradient-to-r from-dark-blue/5 via-blue-50/50 to-purple-50/50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-dark-blue/10">
+              <Calendar className="text-dark-blue mx-auto mb-4" size={40} />
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
                 Calendário Anual de Eventos
               </h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-muted-foreground mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base px-2">
                 Nossos eventos são cuidadosamente planejados para complementar o currículo acadêmico, 
                 proporcionando experiências significativas que contribuem para a formação integral dos nossos alunos.
               </p>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 {events.map((event, index) => (
                   <div key={index} className="group">
-                    <div className={`w-12 h-12 ${event.color} rounded-xl mx-auto mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
-                      {React.cloneElement(event.icon, { size: 20 })}
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 ${event.color} rounded-xl mx-auto mb-2 sm:mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
+                      {React.cloneElement(event.icon, { size: undefined, className: "w-5 h-5 sm:w-6 sm:h-6" })}
                     </div>
-                    <div className="text-lg font-semibold text-foreground group-hover:text-dark-blue transition-colors">
+                    <div className="text-base sm:text-lg font-semibold text-foreground group-hover:text-dark-blue transition-colors">
                       {event.date}
                     </div>
-                    <div className="text-sm text-muted-foreground mt-1">
+                    <div className="text-xs sm:text-sm text-muted-foreground mt-1 px-1">
                       {event.title}
                     </div>
                   </div>
