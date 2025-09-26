@@ -95,10 +95,7 @@ const Hero = () => {
       
       <div className="absolute bottom-3 sm:bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 z-20">
         <div 
-          className="cursor-pointer p-2 sm:p-3 md:p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 group"
-          style={{
-            animation: 'bounce 2s infinite'
-          }}
+          className="cursor-pointer p-2 sm:p-3 md:p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 group bounce-animation"
           onClick={() => {
             const element = document.getElementById('sobre');
             if (element) element.scrollIntoView({ behavior: 'smooth' });

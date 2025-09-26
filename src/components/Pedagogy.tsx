@@ -146,7 +146,7 @@ const Pedagogy = () => {
         {/* Partnerships Section */}
         <div className="text-center">
           <h3 className="text-2xl font-bold text-foreground mb-8">Nossos Parceiros</h3>
-          <div className="max-w-2xl mx-auto">
+          <div className="w-full">
            <PartnershipsCarousel/>
           </div>
         </div>

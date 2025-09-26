@@ -127,24 +127,26 @@ export function PedagogyCarousel() {
 }
 export function PartnershipsCarousel({ partnerships }: { partnerships?: Partnership[] }) {
   return (
-    <div className="flex gap-4 overflow-x-auto py-4 px-2 scroll-smooth">
-      {(partnerships || defaultPartnerships).map((partner, index) => (
-        <a
-          key={index}
-          href={partner.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-shrink-0 w-64 cursor-pointer hover:scale-105 transition-transform"
-        >
-          <Card className="p-6 shadow-lg hover:shadow-xl transition h-full">
-            <CardContent className="text-center">
-              <div className="text-4xl mb-4">{partner.logo}</div>
-              <h4 className="text-xl font-semibold text-foreground mb-2">{partner.name}</h4>
-              <p className="text-muted-foreground">{partner.description}</p>
-            </CardContent>
-          </Card>
-        </a>
-      ))}
+    <div className="w-full overflow-hidden">
+      <div className="flex gap-4 md:gap-6 overflow-x-auto py-4 px-2 scroll-smooth snap-x snap-mandatory">
+        {(partnerships || defaultPartnerships).map((partner, index) => (
+          <a
+            key={index}
+            href={partner.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-shrink-0 w-64 md:w-72 lg:w-80 cursor-pointer hover:scale-105 transition-transform snap-start"
+          >
+            <Card className="p-4 md:p-6 shadow-lg hover:shadow-xl transition h-full">
+              <CardContent className="text-center p-0">
+                <div className="text-3xl md:text-4xl mb-3 md:mb-4">{partner.logo}</div>
+                <h4 className="text-lg md:text-xl font-semibold text-foreground mb-2">{partner.name}</h4>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{partner.description}</p>
+              </CardContent>
+            </Card>
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
