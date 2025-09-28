@@ -4,14 +4,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { GraduationCap, ArrowLeft, CheckCircle, Phone, Mail, MapPin, Users, Award, Heart } from "lucide-react";
+import { GraduationCap, ArrowLeft, CheckCircle, Phone, Mail, MapPin, Users, Award, Heart, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useFormValidation } from "@/hooks/useFormValidation";
 import { Link } from "react-router-dom";
+import { createEmailService } from "@/services/sendEmail";
+import type { StudentRegistrationForm } from "@/types/form";
 
 const CadastroInteresse = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<StudentRegistrationForm>({
     studentName: '',
     parentName: '',
     email: '',
@@ -23,20 +25,52 @@ const CadastroInteresse = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { validateForm } = useFormValidation();
+
+  const emailService = createEmailService();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você integraria com um backend real
-    setIsSubmitted(true);
-    toast({
-      title: "Cadastro realizado com sucesso!",
-      description: "Nossa equipe entrará em contato em breve para agendar sua visita.",
-    });
+
+    if (!validateForm(formData)) {
+      toast({
+        title: "Dados inválidos",
+        description: "Por favor, verifique os dados inseridos e tente novamente.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const result = await emailService.sendRegistrationEmail(formData);
+      
+      if (result.success) {
+        setIsSubmitted(true);
+        toast({
+          title: "Cadastro realizado com sucesso!",
+          description: "Nossa equipe entrará em contato em breve para agendar sua visita.",
+        });
+      } else {
+        throw new Error(result.message || 'Falha no envio');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar cadastro:', error);
+      toast({
+        title: "Erro ao enviar cadastro",
+        description: error instanceof Error ? error.message : "Tente novamente em alguns minutos ou entre em contato diretamente.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const openWhatsApp = () => {
@@ -266,7 +300,6 @@ const CadastroInteresse = () => {
                       </div>
                     </div>
 
-                    {/* Mensagem Adicional */}
                     <div className="space-y-2">
                       <Label htmlFor="message">Mensagem Adicional (opcional)</Label>
                       <Textarea
@@ -278,18 +311,29 @@ const CadastroInteresse = () => {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full bg-dark-blue hover:bg-dark-blue/90 text-lg py-3">
-                      <GraduationCap className="mr-2" size={20} />
-                      Enviar Cadastro de Interesse
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-dark-blue hover:bg-dark-blue/90 text-lg py-3"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="mr-2 animate-spin" size={20} />
+                          Enviando...
+                        </>
+                      ) : (
+                        <>
+                          <GraduationCap className="mr-2" size={20} />
+                          Enviar Cadastro de Interesse
+                        </>
+                      )}
                     </Button>
                   </form>
                 </CardContent>
               </Card>
             </div>
 
-            {/* Sidebar com informações */}
             <div className="space-y-6">
-              {/* Por que escolher */}
               <Card className="shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-lg font-bold text-foreground flex items-center">
@@ -324,7 +368,6 @@ const CadastroInteresse = () => {
                 </CardContent>
               </Card>
 
-              {/* Contato Rápido */}
               <Card className="shadow-lg bg-dark-blue text-primary-foreground">
                 <CardHeader>
                   <CardTitle className="text-lg font-bold flex items-center">
@@ -356,7 +399,6 @@ const CadastroInteresse = () => {
                 </CardContent>
               </Card>
 
-              {/* ACSI Partner */}
               <Card className="shadow-lg">
                 <CardContent className="pt-6 text-center">
                   <div className="text-3xl mb-2">🏆</div>

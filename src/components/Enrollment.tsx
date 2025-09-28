@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Clock, CheckCircle, Phone, Mail, MapPin, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -12,7 +11,6 @@ const Enrollment = () => {
   return (
     <section id="matriculas" className="py-12 sm:py-16 lg:py-20 bg-section-bg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-4">
-        {/* Header */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             Matricule-se Já!
@@ -29,7 +27,6 @@ const Enrollment = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-          {/* Call to Action Principal */}
           <Card className="shadow-xl">
             <CardHeader className="pb-4 sm:pb-6">
               <CardTitle className="text-xl sm:text-2xl font-bold text-foreground flex items-center flex-wrap sm:flex-nowrap">
@@ -89,9 +86,7 @@ const Enrollment = () => {
             </CardContent>
           </Card>
 
-          {/* Informações Complementares */}
           <div className="space-y-6 sm:space-y-8">
-            {/* Diferenciais */}
             <Card className="shadow-lg">
               <CardHeader className="pb-3 sm:pb-6">
                 <CardTitle className="text-lg sm:text-xl font-bold text-foreground flex items-center">
@@ -133,7 +128,6 @@ const Enrollment = () => {
               </CardContent>
             </Card>
 
-            {/* Processo de Matrícula */}
             <Card className="shadow-lg">
               <CardHeader className="pb-3 sm:pb-6">
                 <CardTitle className="text-lg sm:text-xl font-bold text-foreground flex items-center">
@@ -186,7 +180,6 @@ const Enrollment = () => {
               </CardContent>
             </Card>
 
-            {/* Contato */}
             <Card className="shadow-lg bg-dark-blue text-primary-foreground">
               <CardHeader className="pb-3 sm:pb-6">
                 <CardTitle className="text-lg sm:text-xl font-bold flex items-center">
