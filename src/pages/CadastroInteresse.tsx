@@ -82,7 +82,7 @@ const CadastroInteresse = () => {
       <div className="min-h-screen bg-section-bg flex items-center justify-center px-4">
         <Card className="max-w-2xl w-full shadow-xl">
           <CardHeader className="text-center">
-            <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-20 h-20 bg-dark-blue rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="text-primary-foreground" size={40} />
             </div>
             <CardTitle className="text-3xl font-bold text-foreground mb-2">
@@ -98,8 +98,7 @@ const CadastroInteresse = () => {
                 Recebemos suas informações com sucesso! Nossa equipe pedagógica entrará 
                 em contato em breve para agendar uma visita à escola e esclarecer todas as suas dúvidas.
               </p>
-              
-              <div className="bg-primary/5 rounded-lg p-6 space-y-4">
+              <div className="bg-dark-blue/5 rounded-lg p-6 space-y-4">
                 <h4 className="font-semibold text-foreground flex items-center justify-center">
                   <Users className="mr-2 text-primary" size={20} />
                   Próximos Passos:
@@ -123,14 +122,13 @@ const CadastroInteresse = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/">
-                <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                <Button variant="outline" className="border-primary text-primary hover:bg-dark-blue hover:text-primary-foreground">
                   <ArrowLeft className="mr-2" size={18} />
                   Voltar ao Site
                 </Button>
               </Link>
             </div>
 
-            {/* Contato Direto */}
             <div className="border-t border-border pt-6">
               <h4 className="font-semibold text-foreground mb-4">Ou entre em contato diretamente:</h4>
               <div className="grid sm:grid-cols-3 gap-4 text-sm">
@@ -156,7 +154,6 @@ const CadastroInteresse = () => {
 
   return (
     <div className="min-h-screen bg-section-bg py-3">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8 px-4">
           <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-6 mr-6">
             <ArrowLeft className="mr-2" size={20} />
@@ -178,7 +175,6 @@ const CadastroInteresse = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Formulário */}
             <div className="lg:col-span-2">
               <Card className="shadow-xl">
                 <CardHeader>
@@ -191,7 +187,6 @@ const CadastroInteresse = () => {
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Dados do Aluno */}
                     <div className="space-y-4">
                       <h3 className="text-lg font-semibold text-foreground border-b border-border pb-2">
                         Dados do Aluno
@@ -216,9 +211,9 @@ const CadastroInteresse = () => {
                               <SelectValue placeholder="Selecione o segmento" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="fundamental1">Ensino Fundamental I (1º ao 5º ano)</SelectItem>
-                              <SelectItem value="fundamental2">Ensino Fundamental II (6º ao 9º ano)</SelectItem>
-                              <SelectItem value="medio">Ensino Médio (1º ao 3º ano)</SelectItem>
+                              <SelectItem value="fundamental1" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">Ensino Fundamental I (1º ao 5º ano)</SelectItem>
+                              <SelectItem value="fundamental2" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">Ensino Fundamental II (6º ao 9º ano)</SelectItem>
+                              <SelectItem value="medio" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">Ensino Médio (1º ao 3º ano)</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
@@ -230,18 +225,18 @@ const CadastroInteresse = () => {
                               <SelectValue placeholder="Selecione o ano" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="1ano">1º Ano</SelectItem>
-                              <SelectItem value="2ano">2º Ano</SelectItem>
-                              <SelectItem value="3ano">3º Ano</SelectItem>
-                              <SelectItem value="4ano">4º Ano</SelectItem>
-                              <SelectItem value="5ano">5º Ano</SelectItem>
-                              <SelectItem value="6ano">6º Ano</SelectItem>
-                              <SelectItem value="7ano">7º Ano</SelectItem>
-                              <SelectItem value="8ano">8º Ano</SelectItem>
-                              <SelectItem value="9ano">9º Ano</SelectItem>
-                              <SelectItem value="1medio">1º Médio</SelectItem>
-                              <SelectItem value="2medio">2º Médio</SelectItem>
-                              <SelectItem value="3medio">3º Médio</SelectItem>
+                              <SelectItem value="1ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">1º Ano</SelectItem>
+                              <SelectItem value="2ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">2º Ano</SelectItem>
+                              <SelectItem value="3ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">3º Ano</SelectItem>
+                              <SelectItem value="4ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">4º Ano</SelectItem>
+                              <SelectItem value="5ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">5º Ano</SelectItem>
+                              <SelectItem value="6ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">6º Ano</SelectItem>
+                              <SelectItem value="7ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">7º Ano</SelectItem>
+                              <SelectItem value="8ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">8º Ano</SelectItem>
+                              <SelectItem value="9ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">9º Ano</SelectItem>
+                              <SelectItem value="1medio" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">1º Médio</SelectItem>
+                              <SelectItem value="2medio" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">2º Médio</SelectItem>
+                              <SelectItem value="3medio" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">3º Médio</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
@@ -258,7 +253,6 @@ const CadastroInteresse = () => {
                       </div>
                     </div>
 
-                    {/* Dados do Responsável */}
                     <div className="space-y-4">
                       <h3 className="text-lg font-semibold text-foreground border-b border-border pb-2">
                         Dados do Responsável
