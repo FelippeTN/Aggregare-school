@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Enrollment = () => {
   const openWhatsApp = () => {
-    window.open('https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma visita à Escola Aggregare.', '_blank');
+    window.open('https://wa.me/5521972079493?text=Olá! Gostaria de agendar uma visita à Escola Aggregare.', '_blank');
   };
 
   return (
