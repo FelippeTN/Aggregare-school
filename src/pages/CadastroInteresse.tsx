@@ -4,14 +4,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { GraduationCap, ArrowLeft, CheckCircle, Phone, Mail, MapPin, Users, Award, Heart } from "lucide-react";
+import { GraduationCap, ArrowLeft, CheckCircle, Phone, Mail, MapPin, Users, Award, Heart, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useFormValidation } from "@/hooks/useFormValidation";
 import { Link } from "react-router-dom";
+import { createEmailService } from "@/services/sendEmail";
+import type { StudentRegistrationForm } from "@/types/form";
 
 const CadastroInteresse = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<StudentRegistrationForm>({
     studentName: '',
     parentName: '',
     email: '',
@@ -23,24 +25,56 @@ const CadastroInteresse = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { validateForm } = useFormValidation();
+
+  const emailService = createEmailService();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você integraria com um backend real
-    setIsSubmitted(true);
-    toast({
-      title: "Cadastro realizado com sucesso!",
-      description: "Nossa equipe entrará em contato em breve para agendar sua visita.",
-    });
+
+    if (!validateForm(formData)) {
+      toast({
+        title: "Dados inválidos",
+        description: "Por favor, verifique os dados inseridos e tente novamente.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const result = await emailService.sendRegistrationEmail(formData);
+      
+      if (result.success) {
+        setIsSubmitted(true);
+        toast({
+          title: "Cadastro realizado com sucesso!",
+          description: "Nossa equipe entrará em contato em breve para agendar sua visita.",
+        });
+      } else {
+        throw new Error(result.message || 'Falha no envio');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar cadastro:', error);
+      toast({
+        title: "Erro ao enviar cadastro",
+        description: error instanceof Error ? error.message : "Tente novamente em alguns minutos ou entre em contato diretamente.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const openWhatsApp = () => {
-    window.open('https://wa.me/5511999999999?text=Olá! Acabei de fazer meu cadastro de interesse na Escola Aggregare e gostaria de agendar uma visita.', '_blank');
+    window.open('https://wa.me/5521972079493?text=Olá! Acabei de fazer meu cadastro de interesse na Escola Aggregare e gostaria de agendar uma visita.', '_blank');
   };
 
   if (isSubmitted) {
@@ -48,7 +82,7 @@ const CadastroInteresse = () => {
       <div className="min-h-screen bg-section-bg flex items-center justify-center px-4">
         <Card className="max-w-2xl w-full shadow-xl">
           <CardHeader className="text-center">
-            <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-20 h-20 bg-dark-blue rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="text-primary-foreground" size={40} />
             </div>
             <CardTitle className="text-3xl font-bold text-foreground mb-2">
@@ -64,8 +98,7 @@ const CadastroInteresse = () => {
                 Recebemos suas informações com sucesso! Nossa equipe pedagógica entrará 
                 em contato em breve para agendar uma visita à escola e esclarecer todas as suas dúvidas.
               </p>
-              
-              <div className="bg-primary/5 rounded-lg p-6 space-y-4">
+              <div className="bg-dark-blue/5 rounded-lg p-6 space-y-4">
                 <h4 className="font-semibold text-foreground flex items-center justify-center">
                   <Users className="mr-2 text-primary" size={20} />
                   Próximos Passos:
@@ -89,28 +122,27 @@ const CadastroInteresse = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/">
-                <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                <Button variant="outline" className="border-primary text-primary hover:bg-dark-blue hover:text-primary-foreground">
                   <ArrowLeft className="mr-2" size={18} />
                   Voltar ao Site
                 </Button>
               </Link>
             </div>
 
-            {/* Contato Direto */}
             <div className="border-t border-border pt-6">
               <h4 className="font-semibold text-foreground mb-4">Ou entre em contato diretamente:</h4>
               <div className="grid sm:grid-cols-3 gap-4 text-sm">
                 <div className="flex flex-col items-center space-y-2">
                   <Phone className="text-primary" size={24} />
-                  <span className="text-muted-foreground">(11) 99999-9999</span>
+                  <span className="text-muted-foreground">(21) 97207-9493</span>
                 </div>
                 <div className="flex flex-col items-center space-y-2">
                   <Mail className="text-primary" size={24} />
-                  <span className="text-muted-foreground">contato@aggregare.edu.br</span>
+                  <span className="text-muted-foreground">secretaria@colegiocristaoaggregare.com</span>
                 </div>
                 <div className="flex flex-col items-center space-y-2">
                   <MapPin className="text-primary" size={24} />
-                  <span className="text-muted-foreground">Rua da Educação, 123</span>
+                  <span className="text-muted-foreground">Rua Professor Miguel Couto, 123Icarai - Niterói, RJ</span>
                 </div>
               </div>
             </div>
@@ -122,7 +154,6 @@ const CadastroInteresse = () => {
 
   return (
     <div className="min-h-screen bg-section-bg py-3">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8 px-4">
           <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-6 mr-6">
             <ArrowLeft className="mr-2" size={20} />
@@ -144,7 +175,6 @@ const CadastroInteresse = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Formulário */}
             <div className="lg:col-span-2">
               <Card className="shadow-xl">
                 <CardHeader>
@@ -157,7 +187,6 @@ const CadastroInteresse = () => {
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Dados do Aluno */}
                     <div className="space-y-4">
                       <h3 className="text-lg font-semibold text-foreground border-b border-border pb-2">
                         Dados do Aluno
@@ -182,9 +211,9 @@ const CadastroInteresse = () => {
                               <SelectValue placeholder="Selecione o segmento" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="fundamental1">Ensino Fundamental I (1º ao 5º ano)</SelectItem>
-                              <SelectItem value="fundamental2">Ensino Fundamental II (6º ao 9º ano)</SelectItem>
-                              <SelectItem value="medio">Ensino Médio (1º ao 3º ano)</SelectItem>
+                              <SelectItem value="fundamental1" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">Ensino Fundamental I (1º ao 5º ano)</SelectItem>
+                              <SelectItem value="fundamental2" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">Ensino Fundamental II (6º ao 9º ano)</SelectItem>
+                              <SelectItem value="medio" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">Ensino Médio (1º ao 3º ano)</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
@@ -196,18 +225,18 @@ const CadastroInteresse = () => {
                               <SelectValue placeholder="Selecione o ano" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="1ano">1º Ano</SelectItem>
-                              <SelectItem value="2ano">2º Ano</SelectItem>
-                              <SelectItem value="3ano">3º Ano</SelectItem>
-                              <SelectItem value="4ano">4º Ano</SelectItem>
-                              <SelectItem value="5ano">5º Ano</SelectItem>
-                              <SelectItem value="6ano">6º Ano</SelectItem>
-                              <SelectItem value="7ano">7º Ano</SelectItem>
-                              <SelectItem value="8ano">8º Ano</SelectItem>
-                              <SelectItem value="9ano">9º Ano</SelectItem>
-                              <SelectItem value="1medio">1º Médio</SelectItem>
-                              <SelectItem value="2medio">2º Médio</SelectItem>
-                              <SelectItem value="3medio">3º Médio</SelectItem>
+                              <SelectItem value="1ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">1º Ano</SelectItem>
+                              <SelectItem value="2ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">2º Ano</SelectItem>
+                              <SelectItem value="3ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">3º Ano</SelectItem>
+                              <SelectItem value="4ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">4º Ano</SelectItem>
+                              <SelectItem value="5ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">5º Ano</SelectItem>
+                              <SelectItem value="6ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">6º Ano</SelectItem>
+                              <SelectItem value="7ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">7º Ano</SelectItem>
+                              <SelectItem value="8ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">8º Ano</SelectItem>
+                              <SelectItem value="9ano" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">9º Ano</SelectItem>
+                              <SelectItem value="1medio" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">1º Médio</SelectItem>
+                              <SelectItem value="2medio" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">2º Médio</SelectItem>
+                              <SelectItem value="3medio" className="bg-gray-50 hover:bg-blue-50 focus:bg-blue-100">3º Médio</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
@@ -224,7 +253,6 @@ const CadastroInteresse = () => {
                       </div>
                     </div>
 
-                    {/* Dados do Responsável */}
                     <div className="space-y-4">
                       <h3 className="text-lg font-semibold text-foreground border-b border-border pb-2">
                         Dados do Responsável
@@ -259,14 +287,13 @@ const CadastroInteresse = () => {
                             id="phone"
                             value={formData.phone}
                             onChange={(e) => handleInputChange('phone', e.target.value)}
-                            placeholder="(11) 99999-9999"
+                            placeholder="(21) 99999-9999"
                             required
                           />
                         </div>
                       </div>
                     </div>
 
-                    {/* Mensagem Adicional */}
                     <div className="space-y-2">
                       <Label htmlFor="message">Mensagem Adicional (opcional)</Label>
                       <Textarea
@@ -278,18 +305,29 @@ const CadastroInteresse = () => {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full bg-dark-blue hover:bg-dark-blue/90 text-lg py-3">
-                      <GraduationCap className="mr-2" size={20} />
-                      Enviar Cadastro de Interesse
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-dark-blue hover:bg-dark-blue/90 text-lg py-3"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="mr-2 animate-spin" size={20} />
+                          Enviando...
+                        </>
+                      ) : (
+                        <>
+                          <GraduationCap className="mr-2" size={20} />
+                          Enviar Cadastro de Interesse
+                        </>
+                      )}
                     </Button>
                   </form>
                 </CardContent>
               </Card>
             </div>
 
-            {/* Sidebar com informações */}
             <div className="space-y-6">
-              {/* Por que escolher */}
               <Card className="shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-lg font-bold text-foreground flex items-center">
@@ -316,7 +354,7 @@ const CadastroInteresse = () => {
                     <div className="flex items-start space-x-3">
                       <Users className="text-primary flex-shrink-0 mt-1" size={16} />
                       <div>
-                        <div className="font-medium text-foreground text-sm">25+ Anos de Tradição</div>
+                        <div className="font-medium text-foreground text-sm">Ensino com Amor</div>
                         <div className="text-xs text-muted-foreground">Experiência e inovação</div>
                       </div>
                     </div>
@@ -324,7 +362,6 @@ const CadastroInteresse = () => {
                 </CardContent>
               </Card>
 
-              {/* Contato Rápido */}
               <Card className="shadow-lg bg-dark-blue text-primary-foreground">
                 <CardHeader>
                   <CardTitle className="text-lg font-bold flex items-center">
@@ -340,32 +377,34 @@ const CadastroInteresse = () => {
                     onClick={openWhatsApp}
                     className="w-full bg-cyan-blue text-secondary-foreground hover:bg-cyan-blue/90"
                   >
-                    <Phone className="mr-2" size={16} />
-                    WhatsApp: (11) 99999-9999
+                    <Phone className="mr-0" size={16} />
+                    WhatsApp
                   </Button>
-                  <div className="space-y-2 text-sm opacity-90">
+                  <div className="space-y-5 text-sm opacity-90">
                     <div className="flex items-center space-x-2">
-                      <Mail size={14} />
-                      <span>contato@aggregare.edu.br</span>
+                      <Mail size={18} />
+                      <span className="break-all min-w-0">secretaria@colegiocristaoaggregare.com</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <MapPin size={14} />
-                      <span>Rua da Educação, 123</span>
+                      <MapPin size={18} />
+                      <span>Rua Professor Miguel Couto, 123 Icarai - Niterói, RJ</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-
-              {/* ACSI Partner */}
-              <Card className="shadow-lg">
-                <CardContent className="pt-6 text-center">
-                  <div className="text-3xl mb-2">🏆</div>
-                  <h4 className="font-semibold text-foreground mb-2">Parceiro ACSI Brasil</h4>
-                  <p className="text-xs text-muted-foreground">
-                    Padrão internacional de qualidade educacional cristã
-                  </p>
-                </CardContent>
-              </Card>
+              <a href="https://www.acsi.org/"
+                  target="_blank"
+                  rel="noopener noreferrer">         
+                <Card className="shadow-lg mt-6">
+                  <CardContent className="pt-6 text-center">
+                    <div className="text-3xl mb-2">🏆</div>
+                    <h4 className="font-semibold text-foreground mb-2">Parceiro ACSI Brasil</h4>
+                    <p className="text-xs text-muted-foreground">
+                      Padrão internacional de qualidade educacional cristã
+                    </p>
+                  </CardContent>
+                </Card>
+              </a>
             </div>
           </div>
         </div>

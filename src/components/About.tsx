@@ -14,9 +14,8 @@ const About = () => {
             Quem Somos?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Há mais de 25 anos, a Escola Aggregare forma cidadãos íntegros, 
-            preparando nossos alunos para os desafios do futuro com base em 
-            valores cristãos sólidos e excelência acadêmica.
+            O Colégio Cristão Aggregare é dirigido com experiência educacional, excelência e fé fundamentada. 
+            Somos um colégio que busca, com profissionalismo, formar cidadãos íntegros, preparando nossos alunos para os desafios do futuro com base em valores cristãos sólidos e excelência acadêmica.
           </p>
         </div>
 
@@ -27,14 +26,16 @@ const About = () => {
                 Nossa História e Missão
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Fundada com o propósito de unir tradição e inovação, a Escola Aggregare 
-                se destaca por proporcionar uma educação integral que forma não apenas 
-                estudantes academicamente preparados, mas também cidadãos conscientes 
-                de seu papel na sociedade.
+                Fundado com o propósito de unir tradição e inovação, o Colégio Cristão 
+                Aggregare se destaca por proporcionar uma educação integral que forma não 
+                apenas estudantes academicamente preparados, mas também cidadãos conscientes 
+                de seu papel na sociedade, principalmente  como cristãos. 
+
+
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 Nosso diferencial está na combinação única de métodos pedagógicos 
-                modernos com princípios cristãos fundamentais, criando um ambiente 
+                eficientes com princípios cristãos fundamentais, criando um ambiente 
                 de aprendizado que valoriza tanto o conhecimento quanto o caráter.
               </p>
             </div>
@@ -104,9 +105,6 @@ const About = () => {
               <h4 className="text-lg font-semibold text-foreground mb-2">
                 Tradição & Inovação
               </h4>
-              <p className="text-muted-foreground text-sm">
-                25+ anos de experiência com métodos modernos
-              </p>
             </CardContent>
           </Card>
         </div>
