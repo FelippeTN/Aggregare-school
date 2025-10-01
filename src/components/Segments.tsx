@@ -11,7 +11,7 @@ const Segments = () => {
       age: "6 a 10 anos",
       description: "Base sólida para o desenvolvimento integral da criança",
       features: [
-        "Alfabetização e letramento",
+        "Alfabetização e fluência de leitura",
         "Desenvolvimento do raciocínio lógico",
         "Formação de valores cristãos",
         "Atividades lúdicas e pedagógicas",
