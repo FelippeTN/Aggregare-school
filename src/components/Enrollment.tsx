@@ -194,7 +194,8 @@ const Enrollment = () => {
                 </div>
                 <div className="flex items-start sm:items-center space-x-3 text-sm sm:text-base">
                   <Mail size={16} className="flex-shrink-0 mt-0.5 sm:mt-0" />
-                  <span className="break-all">secretaria@colegiocristaoaggregare.com.br</span>
+                    <span className="break-words">secretaria@colegiocristaoaggregare.<wbr />com.br
+                    </span>
                 </div>
                 <div className="flex items-start space-x-3 text-sm sm:text-base">
                   <MapPin size={16} className="flex-shrink-0 mt-0.5" />

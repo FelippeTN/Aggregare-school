@@ -138,7 +138,7 @@ const CadastroInteresse = () => {
                 </div>
                 <div className="flex flex-col items-center space-y-2">
                   <Mail className="text-primary" size={24} />
-                  <span className="text-muted-foreground">secretaria@colegiocristaoaggregare.com</span>
+                  <span className="text-muted-foreground break-all">secretaria@colegiocristaoaggregare.com</span>
                 </div>
                 <div className="flex flex-col items-center space-y-2">
                   <MapPin className="text-primary" size={24} />
