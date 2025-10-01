@@ -74,7 +74,7 @@ const CadastroInteresse = () => {
   };
 
   const openWhatsApp = () => {
-    window.open('https://wa.me/5511999999999?text=Olá! Acabei de fazer meu cadastro de interesse na Escola Aggregare e gostaria de agendar uma visita.', '_blank');
+    window.open('https://wa.me/5521972079493?text=Olá! Acabei de fazer meu cadastro de interesse na Escola Aggregare e gostaria de agendar uma visita.', '_blank');
   };
 
   if (isSubmitted) {
@@ -134,15 +134,15 @@ const CadastroInteresse = () => {
               <div className="grid sm:grid-cols-3 gap-4 text-sm">
                 <div className="flex flex-col items-center space-y-2">
                   <Phone className="text-primary" size={24} />
-                  <span className="text-muted-foreground">(11) 99999-9999</span>
+                  <span className="text-muted-foreground">(21) 97207-9493</span>
                 </div>
                 <div className="flex flex-col items-center space-y-2">
                   <Mail className="text-primary" size={24} />
-                  <span className="text-muted-foreground">contato@aggregare.edu.br</span>
+                  <span className="text-muted-foreground">secretaria@colegiocristaoaggregare.com</span>
                 </div>
                 <div className="flex flex-col items-center space-y-2">
                   <MapPin className="text-primary" size={24} />
-                  <span className="text-muted-foreground">Rua da Educação, 123</span>
+                  <span className="text-muted-foreground">Rua Professor Miguel Couto, 123Icarai - Niterói, RJ</span>
                 </div>
               </div>
             </div>
@@ -287,7 +287,7 @@ const CadastroInteresse = () => {
                             id="phone"
                             value={formData.phone}
                             onChange={(e) => handleInputChange('phone', e.target.value)}
-                            placeholder="(11) 99999-9999"
+                            placeholder="(21) 99999-9999"
                             required
                           />
                         </div>
@@ -354,7 +354,7 @@ const CadastroInteresse = () => {
                     <div className="flex items-start space-x-3">
                       <Users className="text-primary flex-shrink-0 mt-1" size={16} />
                       <div>
-                        <div className="font-medium text-foreground text-sm">25+ Anos de Tradição</div>
+                        <div className="font-medium text-foreground text-sm">Ensino com Amor</div>
                         <div className="text-xs text-muted-foreground">Experiência e inovação</div>
                       </div>
                     </div>
@@ -377,31 +377,34 @@ const CadastroInteresse = () => {
                     onClick={openWhatsApp}
                     className="w-full bg-cyan-blue text-secondary-foreground hover:bg-cyan-blue/90"
                   >
-                    <Phone className="mr-2" size={16} />
-                    WhatsApp: (11) 99999-9999
+                    <Phone className="mr-0" size={16} />
+                    WhatsApp
                   </Button>
-                  <div className="space-y-2 text-sm opacity-90">
+                  <div className="space-y-5 text-sm opacity-90">
                     <div className="flex items-center space-x-2">
-                      <Mail size={14} />
-                      <span>contato@aggregare.edu.br</span>
+                      <Mail size={18} />
+                      <span className="break-all min-w-0">secretaria@colegiocristaoaggregare.com</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <MapPin size={14} />
-                      <span>Rua da Educação, 123</span>
+                      <MapPin size={18} />
+                      <span>Rua Professor Miguel Couto, 123 Icarai - Niterói, RJ</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-
-              <Card className="shadow-lg">
-                <CardContent className="pt-6 text-center">
-                  <div className="text-3xl mb-2">🏆</div>
-                  <h4 className="font-semibold text-foreground mb-2">Parceiro ACSI Brasil</h4>
-                  <p className="text-xs text-muted-foreground">
-                    Padrão internacional de qualidade educacional cristã
-                  </p>
-                </CardContent>
-              </Card>
+              <a href="https://www.acsi.org/"
+                  target="_blank"
+                  rel="noopener noreferrer">         
+                <Card className="shadow-lg mt-6">
+                  <CardContent className="pt-6 text-center">
+                    <div className="text-3xl mb-2">🏆</div>
+                    <h4 className="font-semibold text-foreground mb-2">Parceiro ACSI Brasil</h4>
+                    <p className="text-xs text-muted-foreground">
+                      Padrão internacional de qualidade educacional cristã
+                    </p>
+                  </CardContent>
+                </Card>
+              </a>
             </div>
           </div>
         </div>
