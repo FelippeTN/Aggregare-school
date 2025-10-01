@@ -104,9 +104,6 @@ const About = () => {
               <h4 className="text-lg font-semibold text-foreground mb-2">
                 Tradição & Inovação
               </h4>
-              <p className="text-muted-foreground text-sm">
-                25+ anos de experiência com métodos modernos
-              </p>
             </CardContent>
           </Card>
         </div>

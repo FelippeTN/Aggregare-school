@@ -5,24 +5,28 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Calendar, Heart, Award, BookOpen, Users, X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 
-import aggregareDay1 from "@/assets/kids_playing2.jpg";
-import aggregareDay2 from "@/assets/kids_playing.jpg";
-import aggregareDay3 from "@/assets/kids_playing3.jpg";
-import aggregareDay4 from "@/assets/kids_playing4.jpg";
+import aggregareDay1 from "@/assets/Ag_day/IMG_5478.jpg";
+import aggregareDay2 from "@/assets/Ag_day/IMG_7429.jpg";
+import aggregareDay3 from "@/assets/Ag_day/IMG_7432.jpg";
+import aggregareDay4 from "@/assets/Ag_day/IMG_7446.jpg";
 
-import festaSolidaria1 from "@/assets/festival_smiling.jpg";
-import festaSolidaria2 from "@/assets/smiling.jpg";
-import festaSolidaria3 from "@/assets/teen_praying.jpg";
+import festaSolidaria1 from "@/assets/festa solidaria JPG/IMG_7674.jpg";
+import festaSolidaria2 from "@/assets/festa solidaria JPG/IMG_7748.jpg";
+import festaSolidaria3 from "@/assets/festa solidaria JPG/IMG_7762.jpg";
+import festaSolidaria4 from "@/assets/festa solidaria JPG/IMG_7779.jpg";
 
-import ficFeira1 from "@/assets/technology-education.jpg";
-import ficFeira2 from "@/assets/students.jpg";
-import ficFeira3 from "@/assets/students3.jpg";
-import ficFeira4 from "@/assets/students4.jpg";
+import ficFeira1 from "@/assets/fic/IMG_6465.jpg";
+import ficFeira2 from "@/assets/fic/IMG_6677.jpg";
+import ficFeira3 from "@/assets/fic/IMG_6732.jpg";
+import ficFeira4 from "@/assets/fic/IMG_6756.jpg";
+import ficFeira5 from "@/assets/fic/IMG_7040.jpg";
 
-import expoAggregare1 from "@/assets/students2.jpg";
-import expoAggregare2 from "@/assets/kid_studying.jpg";
-import expoAggregare3 from "@/assets/kid_studying2.jpg";
-import expoAggregare4 from "@/assets/kid_studying3.jpg";
+import expoAggregare1 from "@/assets/feira literaria/IMG_8719.jpg";
+import expoAggregare2 from "@/assets/feira literaria/IMG_8767.jpg";
+import expoAggregare3 from "@/assets/feira literaria/IMG_8778.jpg";
+import expoAggregare4 from "@/assets/feira literaria/IMG_8799.jpg";
+import expoAggregare5 from "@/assets/feira literaria/IMG_8726.jpg";
+
 
 interface ModalCarouselProps {
   images: string[];
@@ -111,7 +115,7 @@ const Events = () => {
       date: "Dezembro",
       description: "Evento que mobiliza toda nossa comunidade escolar em ações de solidariedade.",
       image: festaSolidaria1,
-      images: [festaSolidaria1, festaSolidaria2, festaSolidaria3],
+      images: [festaSolidaria1, festaSolidaria2, festaSolidaria3, festaSolidaria4],
       color: "bg-red-500",
       bgColor: "bg-red-50"
     },
@@ -122,7 +126,7 @@ const Events = () => {
       date: "Outubro",
       description: "Mostra científica onde nossos alunos apresentam projetos de pesquisa inovadores.",
       image: ficFeira1,
-      images: [ficFeira1, ficFeira2, ficFeira3, ficFeira4],
+      images: [ficFeira1, ficFeira2, ficFeira3, ficFeira4, ficFeira5],
       color: "bg-green-500",
       bgColor: "bg-green-50"
     },
@@ -133,7 +137,7 @@ const Events = () => {
       date: "Agosto",
       description: "Celebração da literatura e cultura com apresentações artísticas dos alunos.",
       image: expoAggregare1,
-      images: [expoAggregare1, expoAggregare2, expoAggregare3, expoAggregare4],
+      images: [expoAggregare1, expoAggregare2, expoAggregare3, expoAggregare4, expoAggregare5],
       color: "bg-purple-500",
       bgColor: "bg-purple-50"
     }
