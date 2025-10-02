@@ -1,14 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { DollarSign, Dna, FileText, Brain, CheckCircle, Star } from "lucide-react";
+import { Brain, CheckCircle, Star } from "lucide-react";
 import { PedagogyCarousel, PartnershipsCarousel } from "./Carousel";
+
+import financialIcon from "@/assets/icons/financialIcon.png";
+import simuladoIcon from "@/assets/icons/simuladoIcon.png";
+import dnaIcon from "@/assets/icons/DnaIcon.jpg";
 
 const Pedagogy = () => {
   const projects = [
     {
       title: "Educação Financeira",
       subtitle: "Desde os Anos Iniciais",
-      icon: <DollarSign size={32} />,
+      iconSrc: financialIcon,
       description: "Desenvolvemos consciência financeira desde cedo, preparando nossos alunos para uma vida adulta responsável e próspera.",
       benefits: [
         "Noções de poupança e investimento",
@@ -21,7 +25,7 @@ const Pedagogy = () => {
     {
       title: "DNA Aggregare",
       subtitle: "Metodologia Própria",
-      icon: <Dna size={32} />,
+      iconSrc: dnaIcon,
       description: "Nossa metodologia exclusiva integra tradição cristã com inovação pedagógica, formando alunos preparados para os desafios do século XXI.",
       benefits: [
         "Aprendizagem baseada em projetos",
@@ -34,7 +38,7 @@ const Pedagogy = () => {
     {
       title: "Simulados Regulares",
       subtitle: "Preparação Contínua",
-      icon: <FileText size={32} />,
+      iconSrc: simuladoIcon,
       description: "Sistema de avaliações que prepara nossos alunos para os principais vestibulares e ENEM, com acompanhamento individualizado.",
       benefits: [
         "Simulados semanais e mensais",
@@ -102,10 +106,12 @@ const Pedagogy = () => {
             <Card key={index} className="relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                    <div className="text-primary">
-                      {project.icon}
-                    </div>
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={project.iconSrc} 
+                      alt={`${project.title} icon`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <Badge className="bg-cyan-blue text-secondary-foreground">
                     {project.highlight}
@@ -143,7 +149,6 @@ const Pedagogy = () => {
           ))}
         </div>
 
-        {/* Partnerships Section */}
         <div className="text-center">
           <h3 className="text-2xl font-bold text-foreground mb-8">Nossos Parceiros</h3>
           <div className="w-full">

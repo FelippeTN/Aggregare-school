@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Calendar, Heart, Award, BookOpen, Users, X, ChevronLeft, ChevronRight, ImageIcon, Instagram, ExternalLink } from "lucide-react";
+import { Calendar, Heart, Award, BookOpen, Users, ChevronLeft, ChevronRight, ImageIcon, Instagram, ExternalLink } from "lucide-react";
 
 import aggregareDay1 from "@/assets/Ag_day/IMG_5478.jpg";
 import aggregareDay2 from "@/assets/Ag_day/IMG_7429.jpg";
@@ -31,9 +31,10 @@ import expoAggregare5 from "@/assets/feira literaria/IMG_8726.jpg";
 interface ModalCarouselProps {
   images: string[];
   eventTitle: string;
+  instagramUrl: string;
 }
 
-function ModalCarousel({ images, eventTitle }: ModalCarouselProps) {
+function ModalCarousel({ images, eventTitle, instagramUrl }: ModalCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
@@ -106,7 +107,8 @@ const Events = () => {
       image: aggregareDay1,
       images: [aggregareDay1, aggregareDay2, aggregareDay3, aggregareDay4],
       color: "bg-blue-500",
-      bgColor: "bg-blue-50"
+      bgColor: "bg-blue-50",
+      instagramUrl: "https://www.instagram.com/reel/DHrNll1RFZK/?igsh=cmVxMDl6dXhuZzRu"
     },
     {
       title: "Festa Solidária",
@@ -117,7 +119,8 @@ const Events = () => {
       image: festaSolidaria1,
       images: [festaSolidaria1, festaSolidaria2, festaSolidaria3, festaSolidaria4],
       color: "bg-red-500",
-      bgColor: "bg-red-50"
+      bgColor: "bg-red-50",
+      instagramUrl: "https://www.instagram.com/reel/DMGdAsUxXb7/?igsh=MXE4emU3aGVmMTM5dA=="
     },
     {
       title: "Expo Aggregare",
@@ -128,7 +131,8 @@ const Events = () => {
       image: expoAggregare1,
       images: [expoAggregare1, expoAggregare2, expoAggregare3, expoAggregare4, expoAggregare5],
       color: "bg-purple-500",
-      bgColor: "bg-purple-50"
+      bgColor: "bg-purple-50",
+      instagramUrl: "https://www.instagram.com/reel/DOrP7aJjk64/?igsh=MWp2d2V2MWlhaW00"
     },
     {
       title: "FIC - Feira Científica",
@@ -139,7 +143,8 @@ const Events = () => {
       image: ficFeira1,
       images: [ficFeira1, ficFeira2, ficFeira3, ficFeira4, ficFeira5],
       color: "bg-green-500",
-      bgColor: "bg-green-50"
+      bgColor: "bg-green-50",
+      instagramUrl: "https://www.instagram.com/colegioaggregare/"
     }
   ];
 
@@ -233,7 +238,7 @@ const Events = () => {
                 
                 <div className="flex-1 overflow-y-auto p-2 sm:p-3 space-y-3 sm:space-y-4">
                   <div className="flex-shrink-0">
-                    <ModalCarousel images={event.images} eventTitle={event.title} />
+                    <ModalCarousel images={event.images} eventTitle={event.title} instagramUrl={event.instagramUrl} />
                   </div>
                   
                   <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-100 p-3 sm:p-4 flex-shrink-0">
@@ -249,7 +254,7 @@ const Events = () => {
                       </p>
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Button
-                          onClick={() => window.open('https://instagram.com/aggregareschool', '_blank')}
+                          onClick={() => window.open(event.instagramUrl, '_blank')}
                           size="sm"
                           className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-1.5 rounded-full transition-all duration-300 flex items-center gap-1.5 text-xs sm:text-sm"
                         >
@@ -258,7 +263,7 @@ const Events = () => {
                           <ExternalLink size={12} />
                         </Button>
                         <p className="text-xs text-gray-500">
-                          @aggregareschool
+                          @colegioaggregare
                         </p>
                       </div>
                     </div>
