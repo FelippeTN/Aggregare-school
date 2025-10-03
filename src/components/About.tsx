@@ -4,8 +4,8 @@ import cardPhoto1 from "@/assets/teen_praying.jpg";
 import cardPhoto2 from "@/assets/kid_studying5.jpg";
 import cardPhoto3 from "@/assets/smiling.jpg";
 import cardPhoto4 from "@/assets/festival_smiling.jpg";
-// import leader1Photo from "@/assets/pedagogy2.jpg";
-// import leader2Photo from "@/assets/pedagogy3.jpg";
+import leader1Photo from "@/assets/lideres/fabio.png";
+import leader2Photo from "@/assets/lideres/simone.png";
 
 const About = () => {
   return (
@@ -110,72 +110,121 @@ const About = () => {
             </CardContent>
           </Card>
         </div>
-{/* 
+
         <div className="mt-20">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <div className="text-center mb-16">
+            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Nossa Liderança
             </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Conheça os líderes dedicados que guiam nossa instituição com paixão, 
-              experiência e compromisso com a excelência educacional cristã.
+              experiência e compromisso inabalável com a excelência educacional cristã 
+              e o desenvolvimento integral de nossos alunos.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="relative">
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <Card className="group shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border-0 bg-white">
+              <div className="relative overflow-hidden">
                 <img 
                   src={leader1Photo}
-                  alt="Diretor Pedagógico do Colégio Cristão Aggregare"
-                  className="w-full h-64 object-cover"
+                  alt="Fábio Simas - Educador Sênior do Colégio Cristão Aggregare"
+                  className="w-full h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3">
+                    <h4 className="text-xl font-bold text-foreground">
+                      Fábio Simas
+                    </h4>
+                    <p className="text-primary font-semibold">
+                      Educador Sênior
+                    </p>
+                  </div>
+                </div>
               </div>
-              <CardContent className="p-6">
-                <h4 className="text-xl font-bold text-foreground mb-2">
-                  Prof. Dr. João Silva
-                </h4>
-                <p className="text-primary font-medium mb-3">
-                  Diretor Pedagógico
-                </p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Com mais de 20 anos de experiência em educação cristã, o Prof. Dr. João Silva 
-                  lidera nossa equipe pedagógica com dedicação e visão inovadora. Doutor em 
-                  Educação pela USP, é especialista em metodologias ativas e formação integral. 
-                  Sua paixão por educar jovens cristãos tem transformado vidas e preparado 
-                  líderes para o futuro.
-                </p>
+              
+              <CardContent className="p-8 space-y-4">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm font-medium text-foreground">Formação Acadêmica</span>
+                  </div>
+                  <ul className="text-muted-foreground text-sm space-y-1 ml-4">
+                    <li>• Doutor em Estudos de Linguagem pela UFF</li>
+                    <li>• MBA em Finanças pela Fundação Dom Cabral</li>
+                    <li>• Teologia Reformada pelo SETAV</li>
+                  </ul>
+                </div>
+                
+                <div className="pt-3 border-t border-gray-100">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Especialista em educação com vasta experiência em gestão acadêmica 
+                    e desenvolvimento curricular, unindo conhecimento pedagógico avançado 
+                    com sólida formação teológica.
+                  </p>
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="relative">
+            <Card className="group shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border-0 bg-white">
+              <div className="relative overflow-hidden">
                 <img 
                   src={leader2Photo}
-                  alt="Diretora Executiva do Colégio Cristão Aggregare"
-                  className="w-full h-64 object-cover"
+                  alt="Simone Simas - Psicóloga e Diretora do Colégio Cristão Aggregare"
+                  className="w-full h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3">
+                    <h4 className="text-xl font-bold text-foreground">
+                      Simone Simas
+                    </h4>
+                    <p className="text-primary font-semibold">
+                      Psicóloga e Diretora
+                    </p>
+                  </div>
+                </div>
               </div>
-              <CardContent className="p-6">
-                <h4 className="text-xl font-bold text-foreground mb-2">
-                  Profª. Maria Santos
-                </h4>
-                <p className="text-primary font-medium mb-3">
-                  Diretora Executiva
-                </p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  A Profª. Maria Santos traz uma abordagem única que combina excelência 
-                  administrativa com cuidado pastoral. Mestre em Gestão Educacional e 
-                  com 15 anos de experiência em liderança escolar cristã, ela coordena 
-                  todas as operações do colégio garantindo que cada aluno receba atenção 
-                  personalizada e formação de caráter baseada em valores bíblicos.
-                </p>
+              
+              <CardContent className="p-8 space-y-4">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm font-medium text-foreground">Formação e Experiência</span>
+                  </div>
+                  <ul className="text-muted-foreground text-sm space-y-1 ml-4">
+                    <li>• Psicóloga formada pelo Albert Einstein</li>
+                    <li>• Especialista em TCC pela PUC/UERJ</li>
+                    <li>• 15+ anos de experiência em saúde mental</li>
+                  </ul>
+                </div>
+                
+                <div className="pt-3 border-t border-gray-100">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Sua expertise em saúde mental e desenvolvimento humano enriquece 
+                    significativamente nosso ambiente de acolhimento e cuidado integral 
+                    com os estudantes e suas famílias.
+                  </p>
+                </div>
               </CardContent>
             </Card>
           </div>
-        </div>*/}
+
+
+          <div className="mt-16 bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl p-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <h4 className="text-xl font-bold text-foreground mb-4">
+                Nosso Compromisso
+              </h4>
+              <p className="text-muted-foreground leading-relaxed">
+                Nossa liderança está comprometida em manter os mais altos padrões de 
+                excelência educacional, sempre fundamentados em valores cristãos sólidos 
+                e no desenvolvimento integral de cada estudante.
+              </p>
+            </div>
+          </div>
+        </div>
       </div> 
     </section>
   );
