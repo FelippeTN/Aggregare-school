@@ -50,7 +50,7 @@ const Pedagogy = () => {
     }
   ];
   return (
-    <section id="proposta" className="py-20 bg-section-bg">
+    <section id="proposta" className="py-20 bg-light-gray/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -74,7 +74,7 @@ const Pedagogy = () => {
                   Metodologia Inovadora
                 </h3>
               </div>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-xl text-muted-foreground leading-relaxed">
                 Nosso método pedagógico integra as melhores práticas educacionais internacionais 
                 com valores cristãos fundamentais, criando um ambiente de aprendizagem único e eficaz.
               </p>

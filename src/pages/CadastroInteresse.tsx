@@ -79,7 +79,7 @@ const CadastroInteresse = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-section-bg flex items-center justify-center px-4">
+      <div className="min-h-screen bg-light-gray/30 flex items-center justify-center px-4">
         <Card className="max-w-2xl w-full shadow-xl">
           <CardHeader className="text-center">
             <div className="w-20 h-20 bg-dark-blue rounded-full flex items-center justify-center mx-auto mb-4">
@@ -153,7 +153,7 @@ const CadastroInteresse = () => {
   }
 
   return (
-    <div className="min-h-screen bg-section-bg py-3">
+    <div className="min-h-screen bg-light-gray/30 py-3">
         <div className="flex items-center justify-between mb-8 px-4">
           <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-6 mr-6">
             <ArrowLeft className="mr-2" size={20} />
