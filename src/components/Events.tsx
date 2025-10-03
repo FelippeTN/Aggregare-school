@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Calendar, Heart, Award, BookOpen, Users, X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { Calendar, Heart, Award, BookOpen, Users, ChevronLeft, ChevronRight, ImageIcon, Instagram, ExternalLink } from "lucide-react";
 
 import aggregareDay1 from "@/assets/Ag_day/IMG_5478.jpg";
 import aggregareDay2 from "@/assets/Ag_day/IMG_7429.jpg";
@@ -31,9 +31,10 @@ import expoAggregare5 from "@/assets/feira literaria/IMG_8726.jpg";
 interface ModalCarouselProps {
   images: string[];
   eventTitle: string;
+  instagramUrl: string;
 }
 
-function ModalCarousel({ images, eventTitle }: ModalCarouselProps) {
+function ModalCarousel({ images, eventTitle, instagramUrl }: ModalCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
@@ -49,8 +50,8 @@ function ModalCarousel({ images, eventTitle }: ModalCarouselProps) {
   };
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto">
-      <div className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] rounded-lg overflow-hidden bg-gray-100">
+    <div className="relative w-full max-w-3xl mx-auto">
+      <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden bg-gray-100">
         <img
           src={images[currentIndex]}
           alt={`${eventTitle} - Imagem ${currentIndex + 1}`}
@@ -59,26 +60,26 @@ function ModalCarousel({ images, eventTitle }: ModalCarouselProps) {
         
         <button
           onClick={goToPrevious}
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 hover:scale-110"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 hover:scale-110"
           disabled={images.length <= 1}
         >
-          <ChevronLeft size={18} className="sm:w-6 sm:h-6" />
+          <ChevronLeft size={16} />
         </button>
         
         <button
           onClick={goToNext}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-200 hover:scale-110"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 hover:scale-110"
           disabled={images.length <= 1}
         >
-          <ChevronRight size={18} className="sm:w-6 sm:h-6" />
+          <ChevronRight size={16} />
         </button>
 
-        <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1 sm:space-x-2">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
           {images.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${
                 index === currentIndex
                   ? 'bg-white scale-125'
                   : 'bg-white/50 hover:bg-white/80'
@@ -87,7 +88,7 @@ function ModalCarousel({ images, eventTitle }: ModalCarouselProps) {
           ))}
         </div>
 
-        <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-black/50 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
+        <div className="absolute top-2 right-2 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
           {currentIndex + 1} / {images.length}
         </div>
       </div>
@@ -101,23 +102,37 @@ const Events = () => {
       title: "Aggregare Day",
       subtitle: "Dia da Família na Escola",
       icon: <Users size={32} />,
-      date: "Setembro",
+      date: "Março",
       description: "Um dia especial dedicado à integração entre família, escola e comunidade.",
       image: aggregareDay1,
       images: [aggregareDay1, aggregareDay2, aggregareDay3, aggregareDay4],
       color: "bg-blue-500",
-      bgColor: "bg-blue-50"
+      bgColor: "bg-blue-50",
+      instagramUrl: "https://www.instagram.com/reel/DHrNll1RFZK/?igsh=cmVxMDl6dXhuZzRu"
     },
     {
       title: "Festa Solidária",
       subtitle: "Ação Social da Escola",
       icon: <Heart size={32} />,
-      date: "Dezembro",
+      date: "Julho",
       description: "Evento que mobiliza toda nossa comunidade escolar em ações de solidariedade.",
       image: festaSolidaria1,
       images: [festaSolidaria1, festaSolidaria2, festaSolidaria3, festaSolidaria4],
       color: "bg-red-500",
-      bgColor: "bg-red-50"
+      bgColor: "bg-red-50",
+      instagramUrl: "https://www.instagram.com/reel/DMGdAsUxXb7/?igsh=MXE4emU3aGVmMTM5dA=="
+    },
+    {
+      title: "Expo Aggregare",
+      subtitle: "Feira Literária e Cultural",
+      icon: <BookOpen size={32} />,
+      date: "Setembro",
+      description: "Celebração da literatura e cultura com apresentações artísticas dos alunos.",
+      image: expoAggregare1,
+      images: [expoAggregare1, expoAggregare2, expoAggregare3, expoAggregare4, expoAggregare5],
+      color: "bg-purple-500",
+      bgColor: "bg-purple-50",
+      instagramUrl: "https://www.instagram.com/reel/DOrP7aJjk64/?igsh=MWp2d2V2MWlhaW00"
     },
     {
       title: "FIC - Feira Científica",
@@ -128,18 +143,8 @@ const Events = () => {
       image: ficFeira1,
       images: [ficFeira1, ficFeira2, ficFeira3, ficFeira4, ficFeira5],
       color: "bg-green-500",
-      bgColor: "bg-green-50"
-    },
-    {
-      title: "Expo Aggregare",
-      subtitle: "Feira Literária e Cultural",
-      icon: <BookOpen size={32} />,
-      date: "Agosto",
-      description: "Celebração da literatura e cultura com apresentações artísticas dos alunos.",
-      image: expoAggregare1,
-      images: [expoAggregare1, expoAggregare2, expoAggregare3, expoAggregare4, expoAggregare5],
-      color: "bg-purple-500",
-      bgColor: "bg-purple-50"
+      bgColor: "bg-green-50",
+      instagramUrl: "https://www.instagram.com/colegioaggregare/"
     }
   ];
 
@@ -211,32 +216,57 @@ const Events = () => {
                   </Card>
                 </div>
               </DialogTrigger>
-              
-              <DialogContent className="max-w-6xl w-[95vw] sm:w-[90vw] h-[95vh] sm:h-[90vh] p-0 overflow-hidden">
-                <DialogHeader className="p-4 sm:p-6 pb-2">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
-                    <div className="flex-1">
-                      <DialogTitle className="text-lg sm:text-2xl font-bold flex items-center gap-2 sm:gap-3">
-                        <div className={`w-8 h-8 sm:w-10 sm:h-10 ${event.color} rounded-lg flex items-center justify-center text-white`}>
-                          {React.cloneElement(event.icon, { size: undefined, className: "w-4 h-4 sm:w-5 sm:h-5" })}
+
+              <DialogContent className="max-w-5xl w-[95vw] sm:w-[90vw] max-h-[95vh] p-0 overflow-hidden flex flex-col">
+                <DialogHeader className="p-3 sm:p-4 pb-2 flex-shrink-0">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3">
+                    <div className="flex-1 min-w-0">
+                      <DialogTitle className="text-base sm:text-xl font-bold flex items-center gap-2">
+                        <div className={`w-6 h-6 sm:w-8 sm:h-8 ${event.color} rounded-lg flex items-center justify-center text-white flex-shrink-0`}>
+                          {React.cloneElement(event.icon, { size: undefined, className: "w-3 h-3 sm:w-4 sm:h-4" })}
                         </div>
-                        <span className="line-clamp-2">{event.title}</span>
+                        <span className="truncate">{event.title}</span>
                       </DialogTitle>
-                      <p className="text-muted-foreground mt-1 text-sm sm:text-base">{event.subtitle}</p>
+                      <p className="text-muted-foreground mt-1 text-xs sm:text-sm truncate">{event.subtitle}</p>
                     </div>
-                    <Badge variant="outline" className="flex items-center gap-1 text-xs sm:text-sm shrink-0">
-                      <Calendar size={12} className="sm:w-4 sm:h-4" />
+                    <Badge variant="outline" className="flex items-center gap-1 text-xs shrink-0">
+                      <Calendar size={10} className="sm:w-3 sm:h-3" />
                       {event.date}
                     </Badge>
                   </div>
                 </DialogHeader>
                 
-                <div className="flex-1 p-4 sm:p-6 pt-2">
-                  <ModalCarousel images={event.images} eventTitle={event.title} />
-                  <div className="mt-4 sm:mt-6 text-center">
-                    <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto text-sm sm:text-base">
-                      {event.description}
-                    </p>
+                <div className="flex-1 overflow-y-auto p-2 sm:p-3 space-y-3 sm:space-y-4">
+                  <div className="flex-shrink-0">
+                    <ModalCarousel images={event.images} eventTitle={event.title} instagramUrl={event.instagramUrl} />
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-100 p-3 sm:p-4 flex-shrink-0">
+                    <div className="text-center space-y-2 sm:space-y-3">
+                      <div className="flex items-center justify-center gap-1.5">
+                        <Instagram className="text-purple-600" size={18} />
+                        <h4 className="text-sm sm:text-base font-semibold text-gray-800">
+                          Gostou das fotos?
+                        </h4>
+                      </div>
+                      <p className="text-gray-600 text-xs sm:text-sm">
+                        Mais momentos do <strong>{event.title}</strong> no nosso Instagram!
+                      </p>
+                      <div className="flex flex-col items-center justify-center gap-2">
+                        <Button
+                          onClick={() => window.open(event.instagramUrl, '_blank')}
+                          size="sm"
+                          className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-1.5 rounded-full transition-all duration-300 flex items-center gap-1.5 text-xs sm:text-sm"
+                        >
+                          <Instagram size={14} />
+                          Ver no Instagram
+                          <ExternalLink size={12} />
+                        </Button>
+                        <p className="text-xs text-gray-500">
+                          @colegioaggregare
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </DialogContent>

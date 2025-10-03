@@ -7,7 +7,7 @@ import cardPhoto4 from "@/assets/festival_smiling.jpg";
 
 const About = () => {
   return (
-    <section id="sobre" className="py-20 bg-section-bg">
+    <section id="sobre" className="py-20 bg-light-gray/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -25,7 +25,11 @@ const About = () => {
               <h3 className="text-2xl font-semibold text-foreground">
                 Nossa História e Missão
               </h3>
+<<<<<<< HEAD
               <p className="text-muted-foreground leading-relaxed">
+=======
+              <p className="text-xl text-muted-foreground leading-relaxed">
+>>>>>>> main
                 Fundado com o propósito de unir tradição e inovação, o Colégio Cristão 
                 Aggregare se destaca por proporcionar uma educação integral que forma não 
                 apenas estudantes academicamente preparados, mas também cidadãos conscientes 
@@ -33,7 +37,7 @@ const About = () => {
 
 
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-xl text-muted-foreground leading-relaxed">
                 Nosso diferencial está na combinação única de métodos pedagógicos 
                 eficientes com princípios cristãos fundamentais, criando um ambiente 
                 de aprendizado que valoriza tanto o conhecimento quanto o caráter.

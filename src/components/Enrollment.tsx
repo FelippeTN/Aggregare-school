@@ -9,7 +9,7 @@ const Enrollment = () => {
   };
 
   return (
-    <section id="matriculas" className="py-12 sm:py-16 lg:py-20 bg-section-bg">
+    <section id="matriculas" className="py-12 sm:py-16 lg:py-20 bg-light-gray/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-4">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
@@ -194,7 +194,8 @@ const Enrollment = () => {
                 </div>
                 <div className="flex items-start sm:items-center space-x-3 text-sm sm:text-base">
                   <Mail size={16} className="flex-shrink-0 mt-0.5 sm:mt-0" />
-                  <span className="break-all">secretaria@colegiocristaoaggregare.com.br</span>
+                    <span className="break-words">secretaria@colegiocristaoaggregare.<wbr />com.br
+                    </span>
                 </div>
                 <div className="flex items-start space-x-3 text-sm sm:text-base">
                   <MapPin size={16} className="flex-shrink-0 mt-0.5" />

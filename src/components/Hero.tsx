@@ -67,16 +67,17 @@ const Hero = () => {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-4 max-w-lg mx-auto px-4">
             <div className="text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 md:mb-4">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-1">
                 <Users className="text-cyan-blue-foreground" size={20} />
               </div>
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-cyan-blue" id="alunos">0</div>
               <div className="text-xs sm:text-sm opacity-90">Alunos Formados</div>
             </div>
+
             <div className="text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 md:mb-4">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-cyan-blue rounded-full flex items-center justify-center mx-auto mb-1">
                 <Award className="text-cyan-blue-foreground" size={20} />
               </div>
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-cyan-blue" id="aprovacao">0</div>
