@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const Commitment = () => {
   return (
-    <section className="mt-32">
+    <section id="compromisso" className="mt-32">
       <motion.div 
         className="bg-gradient-to-br from-dark-blue/80 to-dark-blue rounded-2xl overflow-hidden shadow-2xl relative"
         initial={{ opacity: 0, y: 50 }}

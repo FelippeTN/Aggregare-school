@@ -4,7 +4,7 @@ import leader2Photo from "@/assets/lideres/simone.png";
 
 const Leadership = () => {
   return (
-    <section className="mt-32">
+    <section id="lideranca" className="mt-32">
       <div className="text-center mb-20">
         <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 bg-clip-text text-transparent mb-8">
           Nossa Liderança
