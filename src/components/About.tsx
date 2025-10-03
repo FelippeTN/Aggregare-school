@@ -4,6 +4,8 @@ import cardPhoto1 from "@/assets/teen_praying.jpg";
 import cardPhoto2 from "@/assets/kid_studying5.jpg";
 import cardPhoto3 from "@/assets/smiling.jpg";
 import cardPhoto4 from "@/assets/festival_smiling.jpg";
+// import leader1Photo from "@/assets/pedagogy2.jpg";
+// import leader2Photo from "@/assets/pedagogy3.jpg";
 
 const About = () => {
   return (
@@ -25,11 +27,7 @@ const About = () => {
               <h3 className="text-2xl font-semibold text-foreground">
                 Nossa História e Missão
               </h3>
-<<<<<<< HEAD
-              <p className="text-muted-foreground leading-relaxed">
-=======
               <p className="text-xl text-muted-foreground leading-relaxed">
->>>>>>> main
                 Fundado com o propósito de unir tradição e inovação, o Colégio Cristão 
                 Aggregare se destaca por proporcionar uma educação integral que forma não 
                 apenas estudantes academicamente preparados, mas também cidadãos conscientes 
@@ -112,7 +110,73 @@ const About = () => {
             </CardContent>
           </Card>
         </div>
-      </div>
+{/* 
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Nossa Liderança
+            </h3>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Conheça os líderes dedicados que guiam nossa instituição com paixão, 
+              experiência e compromisso com a excelência educacional cristã.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="relative">
+                <img 
+                  src={leader1Photo}
+                  alt="Diretor Pedagógico do Colégio Cristão Aggregare"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <CardContent className="p-6">
+                <h4 className="text-xl font-bold text-foreground mb-2">
+                  Prof. Dr. João Silva
+                </h4>
+                <p className="text-primary font-medium mb-3">
+                  Diretor Pedagógico
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Com mais de 20 anos de experiência em educação cristã, o Prof. Dr. João Silva 
+                  lidera nossa equipe pedagógica com dedicação e visão inovadora. Doutor em 
+                  Educação pela USP, é especialista em metodologias ativas e formação integral. 
+                  Sua paixão por educar jovens cristãos tem transformado vidas e preparado 
+                  líderes para o futuro.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="relative">
+                <img 
+                  src={leader2Photo}
+                  alt="Diretora Executiva do Colégio Cristão Aggregare"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <CardContent className="p-6">
+                <h4 className="text-xl font-bold text-foreground mb-2">
+                  Profª. Maria Santos
+                </h4>
+                <p className="text-primary font-medium mb-3">
+                  Diretora Executiva
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  A Profª. Maria Santos traz uma abordagem única que combina excelência 
+                  administrativa com cuidado pastoral. Mestre em Gestão Educacional e 
+                  com 15 anos de experiência em liderança escolar cristã, ela coordena 
+                  todas as operações do colégio garantindo que cada aluno receba atenção 
+                  personalizada e formação de caráter baseada em valores bíblicos.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>*/}
+      </div> 
     </section>
   );
 };
