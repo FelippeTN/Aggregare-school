@@ -110,4 +110,14 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
 }

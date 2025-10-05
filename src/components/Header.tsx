@@ -9,11 +9,27 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+    setIsMenuOpen(false);
+    
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const headerHeight = 100;
+        const elementPosition = element.offsetTop - headerHeight;
+        
+        try {
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        } catch (error) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    }, 150);
   };
 
   const openWhatsApp = () => {
@@ -85,7 +101,10 @@ const Header = () => {
             ].map((item, index) => (
               <motion.button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.id);
+                }}
                 className="text-sm xl:text-base text-foreground hover:text-primary transition-colors whitespace-nowrap font-medium px-2 py-1 rounded-md hover:bg-primary/5 relative overflow-hidden"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -124,7 +143,10 @@ const Header = () => {
             ].map((item, index) => (
               <motion.button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.id);
+                }}
                 className="text-sm text-foreground hover:text-primary transition-colors whitespace-nowrap font-medium px-2 py-1 rounded-md hover:bg-primary/5 relative overflow-hidden"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -234,13 +256,18 @@ const Header = () => {
                   ].map((item, index) => (
                     <motion.button
                       key={item.id}
-                      onClick={() => scrollToSection(item.id)}
-                      className="text-center py-2 px-1 text-foreground hover:text-primary transition-colors text-base font-medium relative overflow-hidden rounded-md hover:bg-primary/5"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        scrollToSection(item.id);
+                      }}
+                      className="text-center py-3 px-4 text-foreground hover:text-primary transition-colors text-base font-medium relative overflow-hidden rounded-md hover:bg-primary/5 touch-manipulation"
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.1, delay: 0.02 + index * 0.1 }}
                       whileHover={{ scale: 1.02, x: 5 }}
                       whileTap={{ scale: 0.98 }}
+                      style={{ WebkitTapHighlightColor: 'transparent' }}
                     >
                       <motion.span
                         className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cyan-blue to-transparent"
