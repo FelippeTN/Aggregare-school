@@ -1,31 +1,66 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { StaggerChildren, StaggerChild, FadeInWhenVisible, ScaleIn } from "./AnimationComponents";
 import leader1Photo from "@/assets/lideres/fabio.png";
 import leader2Photo from "@/assets/lideres/simone.png";
 
 const Leadership = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "50px" });
   return (
-    <section id="lideranca" className="mt-32">
-      <div className="text-center mb-20">
-        <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 bg-clip-text text-transparent mb-8">
-          Nossa Liderança
-        </h3>
-        <div className="w-24 h-1 bg-gradient-to-r from-cyan-blue to-dark-blue rounded-full mx-auto mb-8"></div>
-        <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium">
-          Conheça os líderes dedicados que guiam nossa instituição com paixão, 
-          experiência e compromisso inabalável com a excelência educacional cristã 
-          e o desenvolvimento integral de nossos alunos.
-        </p>
-      </div>
+    <section id="lideranca" className="mt-32" ref={ref}>
+      <FadeInWhenVisible>
+        <div className="text-center mb-20">
+          <motion.h3 
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 bg-clip-text text-transparent mb-8"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.1, ease: "easeOut" }}
+          >
+            Nossa Liderança
+          </motion.h3>
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-cyan-blue to-dark-blue rounded-full mx-auto mb-8"
+            initial={{ width: 0 }}
+            animate={isInView ? { width: 96 } : { width: 0 }}
+            transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
+          />
+          <motion.p 
+            className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
+          >
+            Conheça os líderes dedicados que guiam nossa instituição com paixão, 
+            experiência e compromisso inabalável com a excelência educacional cristã 
+            e o desenvolvimento integral de nossos alunos.
+          </motion.p>
+        </div>
+      </FadeInWhenVisible>
 
-      <div className="grid md:grid-cols-2 gap-16 max-w-7xl mx-auto">
-        <Card className="group shadow-2xl hover:shadow-3xl transition-all duration-700 overflow-hidden border-0 bg-gradient-to-br from-white via-slate-50 to-white hover:-translate-y-3">
-          <div className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-blue/5 to-indigo-600/5 z-10"></div>
-            <img 
-              src={leader1Photo}
-              alt="Fábio Simas - Educador Sênior do Colégio Cristão Aggregare"
-              className="w-full h-96 object-cover object-center group-hover:scale-110 transition-transform duration-700"
-            />
+      <StaggerChildren className="grid md:grid-cols-2 gap-16 max-w-7xl mx-auto" staggerDelay={0.1}>
+        <StaggerChild>
+          <ScaleIn delay={0.2}>
+            <Card className="group shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden border-0 bg-gradient-to-br from-white via-slate-50 to-white hover:-translate-y-3">
+              <div className="relative overflow-hidden">
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-br from-cyan-blue/5 to-indigo-600/5 z-10"
+                  animate={{ 
+                    background: [
+                      "linear-gradient(45deg, rgba(0,191,255,0.05) 0%, rgba(75,0,130,0.05) 100%)",
+                      "linear-gradient(225deg, rgba(0,191,255,0.05) 0%, rgba(75,0,130,0.05) 100%)",
+                      "linear-gradient(45deg, rgba(0,191,255,0.05) 0%, rgba(75,0,130,0.05) 100%)"
+                    ]
+                  }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.img 
+                  src={leader1Photo}
+                  alt="Fábio Simas - Educador Sênior do Colégio Cristão Aggregare"
+                  className="w-full h-96 object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                  whileHover={{ scale: 1.05 }}
+                />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent"></div>
             <div className="absolute top-6 right-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl border border-white/20">
               <svg className="w-7 h-7 text-cyan-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,16 +113,31 @@ const Leadership = () => {
               </p>
             </div>
           </CardContent>
-        </Card>
+            </Card>
+          </ScaleIn>
+        </StaggerChild>
 
-        <Card className="group shadow-2xl hover:shadow-3xl transition-all duration-700 overflow-hidden border-0 bg-gradient-to-br from-white via-slate-50 to-white hover:-translate-y-3">
-          <div className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-pink-600/5 z-10"></div>
-            <img 
-              src={leader2Photo}
-              alt="Simone Simas - Psicóloga e Diretora do Colégio Cristão Aggregare"
-              className="w-full h-96 object-cover object-center group-hover:scale-110 transition-transform duration-700"
-            />
+        <StaggerChild>
+          <ScaleIn delay={0.4}>
+            <Card className="group shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden border-0 bg-gradient-to-br from-white via-slate-50 to-white hover:-translate-y-3">
+              <div className="relative overflow-hidden">
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-pink-600/5 z-10"
+                  animate={{ 
+                    background: [
+                      "linear-gradient(45deg, rgba(147,51,234,0.05) 0%, rgba(236,72,153,0.05) 100%)",
+                      "linear-gradient(225deg, rgba(147,51,234,0.05) 0%, rgba(236,72,153,0.05) 100%)",
+                      "linear-gradient(45deg, rgba(147,51,234,0.05) 0%, rgba(236,72,153,0.05) 100%)"
+                    ]
+                  }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear", delay: 1 }}
+                />
+                <motion.img 
+                  src={leader2Photo}
+                  alt="Simone Simas - Psicóloga e Diretora do Colégio Cristão Aggregare"
+                  className="w-full h-96 object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                  whileHover={{ scale: 1.05 }}
+                />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent"></div>
             <div className="absolute top-6 right-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl border border-white/20">
               <svg className="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,9 +188,11 @@ const Leadership = () => {
                 com os estudantes e suas famílias.
               </p>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+              </CardContent>
+            </Card>
+          </ScaleIn>
+        </StaggerChild>
+      </StaggerChildren>
     </section>
   );
 };

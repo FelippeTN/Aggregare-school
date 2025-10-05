@@ -1,8 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Users, GraduationCap, Clock, Trophy, Target } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { StaggerChildren, StaggerChild, HoverLift } from "./AnimationComponents";
 
 const Segments = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
   const segments = [
     {
       title: "Ensino Fundamental I",
@@ -52,21 +58,38 @@ const Segments = () => {
   ];
 
   return (
-    <section id="segmentos" className="py-20 bg-background">
+    <section id="segmentos" className="py-20 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.1, ease: "easeOut" }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-foreground mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ duration: 1, delay: 0.02, ease: "easeOut" }}
+          >
             Nossos Segmentos
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
+          >
             Da Educação Infantil ao Ensino Médio, oferecemos uma jornada educacional 
             completa, respeitando cada fase do desenvolvimento dos nossos alunos.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <StaggerChildren className="grid lg:grid-cols-3 gap-8" staggerDelay={0.01}>
           {segments.map((segment, index) => (
-            <Card key={index} className={`${segment.color} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2`}>
+            <StaggerChild key={index}>
+              <HoverLift y={-15} scale={1.03}>
+                <Card className={`${segment.color} shadow-lg border-2 relative overflow-hidden group`}>
               <CardHeader className="text-center pb-4">
                 <div className="w-20 h-20 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
                   <div className="text-primary">
@@ -95,44 +118,101 @@ const Segments = () => {
                     <Target size={18} className="mr-2 text-primary" />
                     Principais Focos:
                   </h4>
-                  <ul className="space-y-2">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100"
+                    transition={{ duration: 0.1 }}
+                  />
+                  <ul className="space-y-2 relative z-10">
                     {segment.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start text-sm text-muted-foreground">
-                        <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <motion.li 
+                        key={idx} 
+                        className="flex items-start text-sm text-muted-foreground"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                        transition={{ duration: 0.1, delay: 0.05 + idx * 0.1 }}
+                      >
+                        <motion.div 
+                          className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"
+                          whileHover={{ scale: 1.5 }}
+                        />
                         {feature}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>
               </CardContent>
-            </Card>
+                </Card>
+              </HoverLift>
+            </StaggerChild>
           ))}
-        </div>
+        </StaggerChildren>
 
-        <div className="text-center mt-16">
+        <motion.div 
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
+        >
           <div className="max-w-4xl mx-auto">
-            <div className="bg-primary/5 rounded-2xl p-8">
-              <Trophy className="text-primary mx-auto mb-4" size={48} />
-              <h3 className="text-2xl font-bold text-foreground mb-4">
+            <motion.div 
+              className="bg-primary/5 rounded-2xl p-8 relative overflow-hidden group"
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 20px 40px rgba(0,191,255,0.1)"
+              }}
+              transition={{ duration: 0.1 }}
+            >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-cyan-blue/10 to-transparent opacity-0 group-hover:opacity-100"
+                transition={{ duration: 0.1 }}
+              />
+              <motion.div
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Trophy className="text-primary mx-auto mb-4 relative z-10" size={48} />
+              </motion.div>
+              <h3 className="text-2xl font-bold text-foreground mb-4 relative z-10">
                 Resultados que Comprovam nossa Excelência
               </h3>
-              <div className="grid md:grid-cols-3 gap-6 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-dark-blue mb-2">98%</div>
-                  <div className="text-muted-foreground">Taxa de Aprovação no ENEM</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-cyan-blue mb-2">85%</div>
-                  <div className="text-muted-foreground">Alunos em Universidades Públicas</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-dark-blue mb-2">92%</div>
-                  <div className="text-muted-foreground">Satisfação das Famílias</div>
-                </div>
+              <div className="grid md:grid-cols-3 gap-6 text-center relative z-10">
+                {[
+                  { value: "98%", label: "Taxa de Aprovação no ENEM", color: "text-dark-blue" },
+                  { value: "85%", label: "Alunos em Universidades Públicas", color: "text-cyan-blue" },
+                  { value: "92%", label: "Satisfação das Famílias", color: "text-dark-blue" }
+                ].map((stat, index) => (
+                  <motion.div 
+                    key={index}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <motion.div 
+                      className={`text-3xl font-bold ${stat.color} mb-2`}
+                      initial={{ scale: 0 }}
+                      animate={isInView ? { scale: 1 } : { scale: 0 }}
+                      transition={{ 
+                        duration: 0.1, 
+                        delay: 0.05 + index * 0.2, 
+                        type: "spring", 
+                        stiffness: 200 
+                      }}
+                    >
+                      {stat.value}
+                    </motion.div>
+                    <motion.div 
+                      className="text-muted-foreground"
+                      initial={{ opacity: 0 }}
+                      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                      transition={{ duration: 0.1, delay: 0.05 + index * 0.2 }}
+                    >
+                      {stat.label}
+                    </motion.div>
+                  </motion.div>
+                ))}
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

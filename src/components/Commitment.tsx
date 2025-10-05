@@ -5,9 +5,9 @@ const Commitment = () => {
     <section id="compromisso" className="mt-32">
       <motion.div 
         className="bg-gradient-to-br from-dark-blue/80 to-dark-blue rounded-2xl overflow-hidden shadow-2xl relative"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.1, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-blue/10 via-transparent to-indigo-600/10"></div>
@@ -15,9 +15,9 @@ const Commitment = () => {
         <div className="relative p-12 lg:p-16 text-center">
           <motion.div 
             className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full mb-8 shadow-lg"
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.1, delay: 0.01, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,7 +29,7 @@ const Commitment = () => {
             className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             Nosso Compromisso
@@ -39,7 +39,7 @@ const Commitment = () => {
             className="w-24 h-1 bg-gradient-to-r from-cyan-blue to-dark-blue rounded-full mx-auto mb-10"
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
             viewport={{ once: true }}
           ></motion.div>
           
@@ -48,7 +48,7 @@ const Commitment = () => {
               className="text-slate-300 text-xl leading-relaxed font-medium mb-12"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
               viewport={{ once: true }}
             >
               Nossa liderança está comprometida em manter os mais altos padrões de 
@@ -61,7 +61,7 @@ const Commitment = () => {
                 className="group"
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
+                transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
                 viewport={{ once: true }}
               >
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
@@ -77,7 +77,7 @@ const Commitment = () => {
                 className="group"
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
+                transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
                 viewport={{ once: true }}
               >
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
@@ -93,7 +93,7 @@ const Commitment = () => {
                 className="group"
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
+                transition={{ duration: 0.1, delay: 0.05, ease: "easeOut" }}
                 viewport={{ once: true }}
               >
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
