@@ -69,14 +69,14 @@ const Leadership = () => {
               </svg>
             </div>
             <div className="absolute bottom-6 left-6 right-6">
-              <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-5 shadow-2xl border border-white/30">
-                <h4 className="text-2xl font-bold text-slate-800 mb-1">
+              <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-3 shadow-2xl border border-white/30">
+                <h4 className="text-xl font-bold text-slate-800 mb-1">
                   Fábio Simas
                 </h4>
-                <p className="text-cyan-blue font-bold text-lg">
+                <p className="text-cyan-blue font-bold text-base">
                   Educador Sênior
                 </p>
-                <div className="w-16 h-1 bg-gradient-to-r from-cyan-blue to-dark-blue rounded-full mt-2"></div>
+                <div className="w-12 h-1 bg-gradient-to-r from-cyan-blue to-dark-blue rounded-full mt-1"></div>
               </div>
             </div>
           </div>
@@ -145,14 +145,14 @@ const Leadership = () => {
               </svg>
             </div>
             <div className="absolute bottom-6 left-6 right-6">
-              <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-5 shadow-2xl border border-white/30">
-                <h4 className="text-2xl font-bold text-slate-800 mb-1">
+              <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-3 shadow-2xl border border-white/30">
+                <h4 className="text-xl font-bold text-slate-800 mb-1">
                   Simone Simas
                 </h4>
-                <p className="text-purple-600 font-bold text-lg">
+                <p className="text-purple-600 font-bold text-base">
                   Psicóloga e Diretora
                 </p>
-                <div className="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mt-2"></div>
+                <div className="w-12 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mt-1"></div>
               </div>
             </div>
           </div>
