@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -36,6 +42,57 @@ const Header = () => {
     window.open('https://wa.me/5521972079493?text=Olá! Gostaria de agendar uma visita à escola.', '_blank');
   };
 
+  const NavDropdown = ({ title, items, delay = 0 }: { title: string; items: { text: string; id: string }[]; delay?: number }) => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <motion.button
+          className="text-sm xl:text-base text-foreground hover:text-primary transition-colors whitespace-nowrap font-medium px-2 py-1 rounded-md hover:bg-primary/5 relative overflow-hidden flex items-center gap-1"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.1, delay: 0.05 + delay }}
+          whileHover={{ 
+            scale: 1.05,
+            y: -2,
+            transition: { type: "spring", stiffness: 400, damping: 10 }
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <motion.span
+            className="absolute inset-0 bg-gradient-to-r from-cyan-blue/10 to-transparent rounded-md"
+            initial={{ x: '-100%' }}
+            whileHover={{ 
+              x: '100%',
+              transition: { duration: 0.1, ease: "easeInOut" }
+            }}
+          />
+          <span className="relative z-10">{title}</span>
+          <ChevronDown size={14} className="relative z-10" />
+        </motion.button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="w-48 bg-background/95 backdrop-blur-md border shadow-xl focus:outline-none">
+        {items.map((item, index) => (
+          <DropdownMenuItem
+            key={item.id}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection(item.id);
+            }}
+            className="cursor-pointer hover:bg-cyan-500/10 hover:text-cyan-600 transition-colors focus:outline-none focus:ring-0 focus:bg-cyan-500/10"
+          >
+            <motion.span
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1, delay: index * 0.05 }}
+              className="w-full"
+            >
+              {item.text}
+            </motion.span>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -55,22 +112,13 @@ const Header = () => {
       className="fixed top-0 left-0 right-0 mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-10 mt-2 bg-background/95 backdrop-blur-md border rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 z-50"
     >
       <div className="px-4 sm:px-5 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18 md:h-20">
+        <div className="flex md:grid md:grid-cols-3 items-center justify-between h-16 sm:h-18 md:h-20">
           <motion.div 
-            className="flex items-center flex-shrink-0 space-x-3"
+            className="flex items-center flex-shrink-0 space-x-3 justify-start"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 500, damping: 8 }}
           >
             <div className="relative">
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-cyan-blue/20 to-transparent rounded-lg"
-                animate={{ 
-                  background: ["linear-gradient(45deg, rgba(0,191,255,0.1) 0%, transparent 50%)", 
-                             "linear-gradient(225deg, rgba(0,191,255,0.1) 0%, transparent 50%)",
-                             "linear-gradient(45deg, rgba(0,191,255,0.1) 0%, transparent 50%)"]
-                }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              />
               <motion.img 
                 src={logo} 
                 alt="Logo do Colégio Aggregare" 
@@ -85,94 +133,135 @@ const Header = () => {
           </motion.div>
 
           <motion.nav 
-            className="hidden lg:flex items-center justify-center flex-1 space-x-2 xl:space-x-4"
+            className="hidden lg:flex items-center justify-center space-x-2 xl:space-x-4"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.1, delay: 0.01 }}
           >
-            {[
-              { text: 'Quem Somos', id: 'sobre' },
-              { text: 'Liderança', id: 'lideranca' },
-              { text: 'Compromisso', id: 'compromisso' },
-              { text: 'Segmentos', id: 'segmentos' },
-              { text: 'Proposta', id: 'proposta' },
-              { text: 'Eventos', id: 'eventos' },
-              { text: 'Matrículas', id: 'matriculas' }
-            ].map((item, index) => (
-              <motion.button
-                key={item.id}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.id);
-                }}
-                className="text-sm xl:text-base text-foreground hover:text-primary transition-colors whitespace-nowrap font-medium px-2 py-1 rounded-md hover:bg-primary/5 relative overflow-hidden"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.1, delay: 0.05 + index * 0.1 }}
+            <NavDropdown 
+              title="Sobre" 
+              items={[
+                { text: 'Quem Somos', id: 'sobre' },
+                { text: 'Liderança', id: 'lideranca' },
+                { text: 'Compromisso', id: 'compromisso' }
+              ]}
+              delay={0}
+            />
+            <NavDropdown 
+              title="Ensino" 
+              items={[
+                { text: 'Segmentos', id: 'segmentos' },
+                { text: 'Proposta', id: 'proposta' }
+              ]}
+              delay={0.1}
+            />
+            <motion.button
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('eventos');
+              }}
+              className="text-sm xl:text-base text-foreground hover:text-primary transition-colors whitespace-nowrap font-medium px-2 py-1 rounded-md hover:bg-primary/5 relative overflow-hidden"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.1, delay: 0.25 }}
+              whileHover={{ 
+                scale: 1.05,
+                y: -2,
+                transition: { type: "spring", stiffness: 400, damping: 10 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.span
+                className="absolute inset-0 bg-gradient-to-r from-cyan-blue/10 to-transparent rounded-md"
+                initial={{ x: '-100%' }}
                 whileHover={{ 
-                  scale: 1.05,
-                  y: -2,
-                  transition: { type: "spring", stiffness: 400, damping: 10 }
+                  x: '100%',
+                  transition: { duration: 0.1, ease: "easeInOut" }
                 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-cyan-blue/10 to-transparent rounded-md"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ 
-                    x: '100%',
-                    transition: { duration: 0.1, ease: "easeInOut" }
-                  }}
-                />
-                <span className="relative z-10">{item.text}</span>
-              </motion.button>
-            ))}
+              />
+              <span className="relative z-10">Eventos</span>
+            </motion.button>
+            <motion.button
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('matriculas');
+              }}
+              className="text-sm xl:text-base text-foreground hover:text-primary transition-colors whitespace-nowrap font-medium px-2 py-1 rounded-md hover:bg-primary/5 relative overflow-hidden"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.1, delay: 0.35 }}
+              whileHover={{ 
+                scale: 1.05,
+                y: -2,
+                transition: { type: "spring", stiffness: 400, damping: 10 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.span
+                className="absolute inset-0 bg-gradient-to-r from-cyan-blue/10 to-transparent rounded-md"
+                initial={{ x: '-100%' }}
+                whileHover={{ 
+                  x: '100%',
+                  transition: { duration: 0.1, ease: "easeInOut" }
+                }}
+              />
+              <span className="relative z-10">Matrículas</span>
+            </motion.button>
           </motion.nav>
           
           <motion.nav 
-            className="hidden md:flex lg:hidden items-center justify-center flex-1 space-x-2"
+            className="hidden md:flex lg:hidden items-center justify-center space-x-2 col-start-2"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.1, delay: 0.02 }}
           >
-            {[
-              { text: 'Sobre', id: 'sobre' },
-              { text: 'Segmentos', id: 'segmentos' },
-              { text: 'Proposta', id: 'proposta' },
-              { text: 'Eventos', id: 'eventos' }
-            ].map((item, index) => (
-              <motion.button
-                key={item.id}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.id);
-                }}
-                className="text-sm text-foreground hover:text-primary transition-colors whitespace-nowrap font-medium px-2 py-1 rounded-md hover:bg-primary/5 relative overflow-hidden"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.1, delay: 0.05 + index * 0.1 }}
+            <NavDropdown 
+              title="Sobre" 
+              items={[
+                { text: 'Quem Somos', id: 'sobre' },
+                { text: 'Liderança', id: 'lideranca' },
+                { text: 'Compromisso', id: 'compromisso' }
+              ]}
+              delay={0}
+            />
+            <NavDropdown 
+              title="Ensino" 
+              items={[
+                { text: 'Segmentos', id: 'segmentos' },
+                { text: 'Proposta', id: 'proposta' }
+              ]}
+              delay={0.1}
+            />
+            <motion.button
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('eventos');
+              }}
+              className="text-sm text-foreground hover:text-primary transition-colors whitespace-nowrap font-medium px-2 py-1 rounded-md hover:bg-primary/5 relative overflow-hidden"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.1, delay: 0.25 }}
+              whileHover={{ 
+                scale: 1.05,
+                y: -2,
+                transition: { type: "spring", stiffness: 400, damping: 10 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.span
+                className="absolute inset-0 bg-gradient-to-r from-cyan-blue/10 to-transparent rounded-md"
+                initial={{ x: '-100%' }}
                 whileHover={{ 
-                  scale: 1.05,
-                  y: -2,
-                  transition: { type: "spring", stiffness: 400, damping: 10 }
+                  x: '100%',
+                  transition: { duration: 0.1, ease: "easeInOut" }
                 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-cyan-blue/10 to-transparent rounded-md"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ 
-                    x: '100%',
-                    transition: { duration: 0.1, ease: "easeInOut" }
-                  }}
-                />
-                <span className="relative z-10">{item.text}</span>
-              </motion.button>
-            ))}
+              />
+              <span className="relative z-10">Eventos</span>
+            </motion.button>
           </motion.nav>
 
           <motion.div 
-            className="hidden md:flex items-center space-x-2 lg:space-x-3 flex-shrink-0"
+            className="hidden md:flex items-center space-x-2 lg:space-x-3 flex-shrink-0 justify-end"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.1, delay: 0.05 }}
