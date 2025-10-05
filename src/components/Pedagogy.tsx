@@ -1,13 +1,18 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, CheckCircle, Star } from "lucide-react";
+import {  CheckCircle, Star } from "lucide-react";
 import { PedagogyCarousel, PartnershipsCarousel } from "./Carousel";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { StaggerChildren, FadeInWhenVisible, HoverLift, SlideInFromSide } from "./AnimationComponents";
 
 import financialIcon from "@/assets/icons/financialIcon.png";
 import simuladoIcon from "@/assets/icons/simuladoIcon.png";
 import dnaIcon from "@/assets/icons/DnaIcon.jpg";
 
 const Pedagogy = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "50px" });
   const projects = [
     {
       title: "Educação Financeira",
@@ -49,113 +54,193 @@ const Pedagogy = () => {
       highlight: "Resultados comprovados"
     }
   ];
+  
   return (
-    <section id="proposta" className="py-20 bg-light-gray/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Proposta Pedagógica & Projetos
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Nossa abordagem única combina metodologias comprovadas com projetos inovadores, 
-            preparando alunos para o sucesso acadêmico e pessoal.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="relative">
-            <PedagogyCarousel />
+    <section id="proposta" className="py-24 bg-light-gray/30 relative overflow-hidden" ref={ref}>
+      <motion.div className="absolute inset-0">
+        <motion.div 
+          className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-cyan-blue/20 to-transparent rounded-full blur-3xl"
+          animate={{ 
+            x: [0, 30, 0],
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-tl from-indigo-500/20 to-transparent rounded-full blur-3xl"
+          animate={{ 
+            x: [0, -40, 0],
+            y: [0, 25, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+      </motion.div>
+      
+      <div className="container mx-auto px-4 relative">
+        <FadeInWhenVisible>
+          <div className="text-center mb-20">
+            <motion.h2 
+              className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 bg-clip-text text-transparent mb-8 leading-tight"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.1, ease: "easeOut" }}
+            >
+              Proposta Pedagógica
+            </motion.h2>
+            <motion.div 
+              className="w-24 h-1 bg-gradient-to-r from-cyan-blue to-dark-blue rounded-full mx-auto mb-8"
+              initial={{ width: 0 }}
+              animate={isInView ? { width: 96 } : { width: 0 }}
+              transition={{ duration: 0.1, delay: 0.01, ease: "easeOut" }}
+            />
+            <motion.p 
+              className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.1, delay: 0.02, ease: "easeOut" }}
+            >
+              Nossa abordagem única combina metodologias comprovadas com projetos inovadores, 
+              preparando alunos para o sucesso acadêmico e pessoal com base em valores cristãos sólidos e excelência acadêmica.
+            </motion.p>
           </div>
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <div className="flex items-center space-x-3">
-                <Brain className="text-primary" size={32} />
-                <h3 className="text-2xl font-semibold text-foreground">
-                  Metodologia Inovadora
-                </h3>
-              </div>
-              <p className="text-xl text-muted-foreground leading-relaxed">
-                Nosso método pedagógico integra as melhores práticas educacionais internacionais 
-                com valores cristãos fundamentais, criando um ambiente de aprendizagem único e eficaz.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="text-primary" size={20} />
-                  <span className="text-sm text-muted-foreground">Ensino Personalizado</span>
+        </FadeInWhenVisible>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+          <SlideInFromSide direction="left">
+            <div className="space-y-10">
+              <div className="space-y-8">
+                <div className="relative">
+                  <div className="absolute -left-6 top-0 w-1 h-full bg-gradient-to-b from-cyan-blue to-dark-blue rounded-full"></div>
+                  <h3 className="text-3xl font-bold text-slate-800 mb-2">
+                    Metodologia Inovadora
+                  </h3>
+                  <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-blue to-dark-blue rounded-full mb-6"></div>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="text-primary" size={20} />
-                  <span className="text-sm text-muted-foreground">Tecnologia Integrada</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="text-primary" size={20} />
-                  <span className="text-sm text-muted-foreground">Valores Cristãos</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="text-primary" size={20} />
-                  <span className="text-sm text-muted-foreground">Resultados Mensuráveis</span>
-                </div>
+                <HoverLift>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-100">
+                    <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                      Nosso método pedagógico integra as melhores práticas educacionais internacionais 
+                      com valores cristãos fundamentais, criando um ambiente de aprendizagem único e eficaz 
+                      que prepara nossos alunos para os desafios do século XXI.
+                    </p>
+                    <StaggerChildren className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="text-cyan-blue" size={20} />
+                        <span className="text-sm text-slate-600">Ensino Personalizado</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="text-cyan-blue" size={20} />
+                        <span className="text-sm text-slate-600">Tecnologia Integrada</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="text-cyan-blue" size={20} />
+                        <span className="text-sm text-slate-600">Valores Cristãos</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="text-cyan-blue" size={20} />
+                        <span className="text-sm text-slate-600">Resultados Mensuráveis</span>
+                      </div>
+                    </StaggerChildren>
+                  </div>
+                </HoverLift>
               </div>
             </div>
-          </div>
+          </SlideInFromSide>
           
+          <SlideInFromSide direction="right">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-blue/10 to-indigo-600/10 rounded-3xl blur-xl"></div>
+              <div className="relative bg-white rounded-2xl p-2 shadow-2xl">
+                <PedagogyCarousel />
+              </div>
+            </div>
+          </SlideInFromSide>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <StaggerChildren className="grid lg:grid-cols-3 gap-8 mb-16" staggerDelay={0.01}>
           {projects.map((project, index) => (
-            <Card key={index} className="relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <CardHeader className="pb-4">
-                <div className="flex items-start justify-between">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={project.iconSrc} 
-                      alt={`${project.title} icon`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <Badge className="bg-cyan-blue text-secondary-foreground">
+            <HoverLift key={index}>
+              <Card className="group text-center bg-white/90 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border-0">
+              <div className="relative overflow-hidden">
+                <div className="w-full h-48 bg-gradient-to-br from-cyan-blue/10 to-indigo-600/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                  <img 
+                    src={project.iconSrc} 
+                    alt={`${project.title} icon`}
+                    className="w-20 h-20 object-cover rounded-full shadow-lg"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-cyan-blue/20 to-transparent"></div>
+                <div className="absolute top-4 right-4">
+                  <Badge className="bg-cyan-blue/90 text-white shadow-lg">
                     {project.highlight}
                   </Badge>
                 </div>
-                <CardTitle className="text-xl font-bold text-foreground">
+              </div>
+              
+              <CardContent className="p-8">
+                <h4 className="text-xl font-bold text-slate-800 mb-2">
                   {project.title}
-                </CardTitle>
-                <p className="text-sm text-primary font-medium">
+                </h4>
+                <div className="w-12 h-0.5 bg-gradient-to-r from-cyan-blue to-dark-blue rounded-full mx-auto mb-4"></div>
+                <p className="text-sm text-cyan-blue font-medium mb-4">
                   {project.subtitle}
                 </p>
-              </CardHeader>
-              
-              <CardContent className="space-y-6">
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-slate-600 leading-relaxed mb-6">
                   {project.description}
                 </p>
                 
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-foreground flex items-center">
-                    <Star size={18} className="mr-2 text-secondary" />
+                <div className="space-y-3 text-left">
+                  <h5 className="font-semibold text-slate-800 flex items-center justify-center">
+                    <Star size={18} className="mr-2 text-cyan-blue" />
                     Principais Benefícios:
-                  </h4>
+                  </h5>
                   <ul className="space-y-2">
                     {project.benefits.map((benefit, idx) => (
-                      <li key={idx} className="flex items-start text-sm text-muted-foreground">
-                        <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <li key={idx} className="flex items-start text-sm text-slate-600">
+                        <div className="w-2 h-2 bg-cyan-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         {benefit}
                       </li>
                     ))}
                   </ul>
                 </div>
               </CardContent>
-            </Card>
+              </Card>
+            </HoverLift>
           ))}
-        </div>
+        </StaggerChildren>
 
-        <div className="text-center">
-          <h3 className="text-2xl font-bold text-foreground mb-8">Nossos Parceiros</h3>
-          <div className="w-full">
-           <PartnershipsCarousel/>
+        <FadeInWhenVisible>
+          <div className="text-center">
+            <motion.h3 
+              className="text-3xl font-bold text-slate-800 mb-2"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.1, ease: "easeOut" }}
+            >
+              Nossos Parceiros
+            </motion.h3>
+            <motion.div 
+              className="w-16 h-0.5 bg-gradient-to-r from-cyan-blue to-dark-blue rounded-full mx-auto mb-8"
+              initial={{ width: 0 }}
+              animate={isInView ? { width: 64 } : { width: 0 }}
+              transition={{ duration: 0.1, delay: 0.01, ease: "easeOut" }}
+            />
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.1, delay: 0.02 }}
+            >
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-blue/5 to-indigo-600/5 rounded-2xl blur-xl"></div>
+              <div className="relative bg-white/50 backdrop-blur-sm rounded-xl p-4 shadow-lg">
+                <PartnershipsCarousel/>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </div>
+        </FadeInWhenVisible>
+      </div> 
     </section>
   );
 };

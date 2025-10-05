@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Calendar, Heart, Award, BookOpen, Users, ChevronLeft, ChevronRight, ImageIcon, Instagram, ExternalLink } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { StaggerChildren, FadeInWhenVisible, HoverLift } from "./AnimationComponents";
 
 import aggregareDay1 from "@/assets/Ag_day/IMG_5478.jpg";
 import aggregareDay2 from "@/assets/Ag_day/IMG_7429.jpg";
@@ -97,6 +100,9 @@ function ModalCarousel({ images, eventTitle, instagramUrl }: ModalCarouselProps)
 }
 
 const Events = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "50px" });
+  
   const events = [
     {
       title: "Aggregare Day",
@@ -149,22 +155,35 @@ const Events = () => {
   ];
 
   return (
-    <section id="eventos" className="py-12 sm:py-16 lg:py-20 bg-background">
+    <section id="eventos" className="py-12 sm:py-16 lg:py-20 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-black text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
-            Nossos Eventos
-          </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-            Durante o ano letivo, promovemos eventos especiais que enriquecem a experiência 
-            educativa e fortalecem a comunidade escolar.
-          </p>
-        </div>
+        <FadeInWhenVisible>
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <motion.h2 
+              className="text-black text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.1, ease: "easeOut" }}
+            >
+              Nossos Eventos
+            </motion.h2>
+            <motion.p 
+              className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.1, delay: 0.02, ease: "easeOut" }}
+            >
+              Durante o ano letivo, promovemos eventos especiais que enriquecem a experiência 
+              educativa e fortalecem a comunidade escolar.
+            </motion.p>
+          </div>
+        </FadeInWhenVisible>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <StaggerChildren className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8" staggerDelay={0.1}>
           {events.map((event, index) => (
-            <Dialog key={index}>
-              <DialogTrigger asChild>
+            <HoverLift key={index}>
+              <Dialog>
+                <DialogTrigger asChild>
                 <div className="relative group cursor-pointer">
                   <div className="absolute inset-0 rounded-xl overflow-hidden">
                     <img 
@@ -271,24 +290,47 @@ const Events = () => {
                 </div>
               </DialogContent>
             </Dialog>
+            </HoverLift>
           ))}
-        </div>
+        </StaggerChildren>
 
-        <div className="text-center mt-12 lg:mt-16">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-dark-blue/5 via-blue-50/50 to-purple-50/50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-dark-blue/10">
-              <Calendar className="text-dark-blue mx-auto mb-4" size={40} />
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
-                Calendário Anual de Eventos
-              </h3>
-              <p className="text-muted-foreground mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base px-2">
-                Nossos eventos são cuidadosamente planejados para complementar o currículo acadêmico, 
-                proporcionando experiências significativas que contribuem para a formação integral dos nossos alunos.
-              </p>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                {events.map((event, index) => (
-                  <div key={index} className="group">
+        <FadeInWhenVisible>
+          <motion.div 
+            className="text-center mt-12 lg:mt-16"
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.1, delay: 0.05 }}
+          >
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-gradient-to-r from-dark-blue/5 via-blue-50/50 to-purple-50/50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-dark-blue/10">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
+                  animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : { opacity: 0, scale: 0.5, rotate: -180 }}
+                  transition={{ duration: 0.1, delay: 0.05 }}
+                >
+                  <Calendar className="text-dark-blue mx-auto mb-4" size={40} />
+                </motion.div>
+                <motion.h3 
+                  className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.1, delay: 0.05 }}
+                >
+                  Calendário Anual de Eventos
+                </motion.h3>
+                <motion.p 
+                  className="text-muted-foreground mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base px-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.1, delay: 0.05 }}
+                >
+                  Nossos eventos são cuidadosamente planejados para complementar o currículo acadêmico, 
+                  proporcionando experiências significativas que contribuem para a formação integral dos nossos alunos.
+                </motion.p>
+                
+                <StaggerChildren className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" staggerDelay={0.1}>
+                  {events.map((event, index) => (
+                  <HoverLift key={index} className="group">
                     <div className={`w-10 h-10 sm:w-12 sm:h-12 ${event.color} rounded-xl mx-auto mb-2 sm:mb-3 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
                       {React.cloneElement(event.icon, { size: undefined, className: "w-5 h-5 sm:w-6 sm:h-6" })}
                     </div>
@@ -298,12 +340,13 @@ const Events = () => {
                     <div className="text-xs sm:text-sm text-muted-foreground mt-1 px-1">
                       {event.title}
                     </div>
-                  </div>
+                  </HoverLift>
                 ))}
+                </StaggerChildren>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </FadeInWhenVisible>
       </div>
     </section>
   );
