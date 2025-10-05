@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion, AnimatePresence } from "framer-motion";
 
 import { type CarouselApi } from "@/components/ui/carousel"; 
 
@@ -84,68 +83,38 @@ function AutoplayCarousel({ images, items, renderItem, autoplayInterval = 3000, 
   }, [api, startAutoplay, stopAutoplay]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.1, ease: "easeOut" }}
+    <Carousel
+      setApi={setApi}
+      opts={{
+        loop: true,
+      }}
+      className={className}
+      onMouseEnter={stopAutoplay}
+      onMouseLeave={startAutoplay}
     >
-      <Carousel
-        setApi={setApi}
-        opts={{
-          loop: true,
-        }}
-        className={className}
-        onMouseEnter={stopAutoplay}
-        onMouseLeave={startAutoplay}
-      >
-        <CarouselContent>
-         {items && renderItem
-      ? items.map((item, index) => renderItem(item, index))
-      : images?.map((imgSrc, index) => (
-          <CarouselItem key={index}>
-            <motion.div 
-              className="p-1"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.1 }}
-            >
-              <Card className="overflow-hidden">
-                <CardContent className="flex aspect-square items-center justify-center p-0 relative group">
-                  <motion.img 
-                    src={imgSrc} 
-                    alt={`Imagem ${index + 1} do carrossel`} 
-                    className="w-full h-full object-cover rounded-lg"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.1, ease: "easeOut" }}
-                  />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-cyan-blue/20 via-transparent to-transparent opacity-0 group-hover:opacity-100"
-                    transition={{ duration: 0.1 }}
-                  />
-                  <motion.div
-                    className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100"
-                    transition={{ duration: 0.1 }}
-                  />
-                </CardContent>
-              </Card>
-            </motion.div>
-          </CarouselItem>
-        ))
-    }
-        </CarouselContent >
-        <motion.div
-          whileHover={{ scale: 1.1, x: -5 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-cyan-blue/20 hover:border-cyan-blue text-black rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300">&#8592;</CarouselPrevious>
-        </motion.div>
-        <motion.div
-          whileHover={{ scale: 1.1, x: 5 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-cyan-blue/20 hover:border-cyan-blue text-black rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300">&#8594;</CarouselNext>
-        </motion.div>
-      </Carousel>
-    </motion.div>
+      <CarouselContent>
+       {items && renderItem
+    ? items.map((item, index) => renderItem(item, index))
+    : images?.map((imgSrc, index) => (
+        <CarouselItem key={index}>
+          <div className="p-1">
+            <Card>
+              <CardContent className="flex aspect-square items-center justify-center p-0">
+                <img 
+                  src={imgSrc} 
+                  alt={`Imagem ${index + 1} do carrossel`} 
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </CarouselItem>
+      ))
+  }
+      </CarouselContent >
+      <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-black rounded-full p-2 shadow-md hover:shadow-lg transition">&#8592;</CarouselPrevious>
+      <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-black rounded-full p-2 shadow-md hover:shadow-lg transition">&#8594;</CarouselNext>
+    </Carousel>
   );
 }
 
