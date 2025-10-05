@@ -3,6 +3,7 @@ import { GraduationCap, Users, Award, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CountUp } from "countup.js";
 import heroImage from "@/assets/kids_playing.jpg";
+import heroImageMobile from "@/assets/kid_studying.jpg";
 import { useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -33,7 +34,15 @@ const Hero = () => {
         <motion.img 
           src={heroImage} 
           alt="Escola Aggregare" 
-          className="w-full h-full object-cover"
+          className="hidden sm:block w-full h-full object-cover"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.1, ease: "easeOut" }}
+        />
+        <motion.img 
+          src={heroImageMobile} 
+          alt="Escola Aggregare" 
+          className="block sm:hidden w-full h-full object-cover"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.1, ease: "easeOut" }}
