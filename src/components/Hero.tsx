@@ -22,7 +22,7 @@ const Hero = () => {
       if (anos) new CountUp(anos, 25, options).start();
       if (alunos) new CountUp(alunos, 1500, options).start();
       if (aprovacao) new CountUp(aprovacao, 98, { ...options, suffix: "%" }).start();
-    }, 1500); // Delay para iniciar após as animações de entrada
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -106,7 +106,7 @@ const Hero = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.05, ease: "easeOut" }}
           >
-            <Link to="/cadastro-interesse" className="w-full sm:w-auto">
+            <Link to="/cadastro-interesse">
               <motion.div
                 whileHover={{ 
                   scale: 1.05,
@@ -117,7 +117,7 @@ const Hero = () => {
               >
                 <Button 
                   size="lg" 
-                  className="bg-cyan-blue text-cyan-blue-foreground hover:bg-cyan-blue/90 text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 shadow-lg w-full sm:w-auto relative overflow-hidden group"
+                  className="bg-cyan-blue text-cyan-blue-foreground hover:bg-cyan-blue/90 text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 shadow-lg w-60 sm:w-64 relative overflow-hidden group"
                 >
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
@@ -143,7 +143,7 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-black hover:bg-white/90 hover:text-primary text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 w-full sm:w-auto relative overflow-hidden group"
+                className="border-white text-black hover:bg-white/90 hover:text-primary text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 w-60 sm:w-64 relative overflow-hidden group"
                 onClick={() => {
                   const element = document.getElementById('sobre');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -265,49 +265,45 @@ const Hero = () => {
       </motion.div>
       
       <motion.div 
-        className="absolute bottom-3 sm:bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 z-20"
-        initial={{ y: 20, opacity: 0 }}
+        className="absolute bottom-3 sm:bottom-4 md:bottom-6 left-0 right-0 flex justify-center z-20"
+        initial={{ y: 30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 0.05, ease: "easeOut" }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.2, 
+          ease: "easeOut",
+          type: "spring",
+          stiffness: 100,
+          damping: 15
+        }}
       >
         <motion.div 
-          className="cursor-pointer p-2 sm:p-3 md:p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+          className="cursor-pointer p-2 sm:p-3 md:p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 group bounce-animation"
           onClick={() => {
             const element = document.getElementById('sobre');
             if (element) element.scrollIntoView({ behavior: 'smooth' });
           }}
-          animate={{ 
-            y: [0, -10, 0],
-            transition: { 
-              duration: 1, 
-              repeat: Infinity, 
-              ease: "easeInOut",
-              delay: 0.05
-            }
-          }}
           whileHover={{ 
             scale: 1.1,
-            backgroundColor: "rgba(255,255,255,0.4)",
-            borderColor: "rgba(0,191,255,0.8)"
+            y: -5,
+            boxShadow: "0 10px 25px rgba(255,255,255,0.2)"
           }}
           whileTap={{ scale: 0.95 }}
+          animate={{
+            y: [0, -10, 0],
+            transition: {
+              duration: 2,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+              delay: 2
+            }
+          }}
         >
-          <motion.div
-            animate={{ 
-              rotate: [0, 5, -5, 0],
-              transition: { 
-                duration: 0.1, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: 0.05
-              }
-            }}
-          >
-            <ChevronDown 
-              className="text-white group-hover:text-cyan-blue transition-colors duration-300" 
-              size={20} 
-            />
-          </motion.div>
+          <ChevronDown 
+            className="text-white group-hover:text-cyan-blue transition-colors duration-300" 
+            size={20} 
+          />
         </motion.div>
       </motion.div>
     </section>
