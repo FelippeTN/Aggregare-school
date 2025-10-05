@@ -150,12 +150,35 @@ const Pedagogy = () => {
           </SlideInFromSide>
           
           <SlideInFromSide direction="right">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-blue/10 to-indigo-600/10 rounded-3xl blur-xl"></div>
-              <div className="relative bg-white rounded-2xl p-2 shadow-2xl">
-                <PedagogyCarousel />
-              </div>
-            </div>
+            <motion.div 
+                        className="relative"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                        transition={{ duration: 1, delay: 0.05, ease: "easeOut" }}
+                      >
+                        <motion.div 
+                          className="absolute -inset-4 bg-gradient-to-r from-cyan-blue/10 to-indigo-600/10 rounded-3xl blur-xl"
+                          animate={{ 
+                            scale: [1, 1.05, 1],
+                            rotate: [0, 1, 0]
+                          }}
+                          transition={{ 
+                            duration: 1, 
+                            repeat: Infinity, 
+                            ease: "easeInOut" 
+                          }}
+                        />
+                        <motion.div 
+                          className="relative bg-white rounded-2xl p-2 shadow-2xl"
+                          whileHover={{ 
+                            y: -10,
+                            boxShadow: "0 25px 50px rgba(0,191,255,0.2)",
+                            transition: { duration: 0.1 }
+                          }}
+                        >
+                          <PedagogyCarousel />
+                        </motion.div>
+                      </motion.div>
           </SlideInFromSide>
         </div>
 
