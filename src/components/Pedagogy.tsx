@@ -56,28 +56,7 @@ const Pedagogy = () => {
   ];
   
   return (
-    <section id="proposta" className="py-24 bg-light-gray/30 relative overflow-hidden" ref={ref}>
-      <motion.div className="absolute inset-0">
-        <motion.div 
-          className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-cyan-blue/20 to-transparent rounded-full blur-3xl"
-          animate={{ 
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-tl from-indigo-500/20 to-transparent rounded-full blur-3xl"
-          animate={{ 
-            x: [0, -40, 0],
-            y: [0, 25, 0],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-      </motion.div>
-      
+    <section id="proposta" className="py-24 bg-light-gray/30 relative overflow-hidden" ref={ref}>   
       <div className="container mx-auto px-4 relative">
         <FadeInWhenVisible>
           <div className="text-center mb-20">
@@ -112,7 +91,6 @@ const Pedagogy = () => {
             <div className="space-y-10">
               <div className="space-y-8">
                 <div className="relative">
-                  <div className="absolute -left-6 top-0 w-1 h-full bg-gradient-to-b from-cyan-blue to-dark-blue rounded-full"></div>
                   <h3 className="text-3xl font-bold text-slate-800 mb-2">
                     Metodologia Inovadora
                   </h3>
@@ -256,7 +234,6 @@ const Pedagogy = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.1, delay: 0.02 }}
             >
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-blue/5 to-indigo-600/5 rounded-2xl blur-xl"></div>
               <div className="relative bg-white/50 backdrop-blur-sm rounded-xl p-4 shadow-lg">
                 <PartnershipsCarousel/>
               </div>

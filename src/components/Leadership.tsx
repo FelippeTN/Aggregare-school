@@ -8,7 +8,7 @@ const Leadership = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "50px" });
   return (
-    <section id="lideranca" className="mt-32" ref={ref}>
+    <section id="lideranca" className="mt-24 mb-10" ref={ref}>
       <FadeInWhenVisible>
         <div className="text-center mb-10">
           <motion.h3 

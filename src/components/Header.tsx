@@ -143,6 +143,7 @@ const Header = () => {
               items={[
                 { text: 'Quem Somos', id: 'sobre' },
                 { text: 'Liderança', id: 'lideranca' },
+                { text: 'Capelania', id: 'capelania' },
                 { text: 'Compromisso', id: 'compromisso' }
               ]}
               delay={0}
@@ -220,6 +221,7 @@ const Header = () => {
               items={[
                 { text: 'Quem Somos', id: 'sobre' },
                 { text: 'Liderança', id: 'lideranca' },
+                { text: 'Capelania', id: 'capelania' },
                 { text: 'Compromisso', id: 'compromisso' }
               ]}
               delay={0}
@@ -337,6 +339,7 @@ const Header = () => {
                   {[
                     { text: 'Quem Somos', id: 'sobre' },
                     { text: 'Liderança', id: 'lideranca' },
+                    { text: 'Capelania', id: 'capelania' },
                     { text: 'Nosso Compromisso', id: 'compromisso' },
                     { text: 'Segmentos', id: 'segmentos' },
                     { text: 'Proposta Pedagógica', id: 'proposta' },

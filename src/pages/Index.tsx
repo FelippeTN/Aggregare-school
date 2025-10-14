@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Leadership from "@/components/Leadership";
+import Chaplaincy from "@/components/Chaplaincy";
 import Commitment from "@/components/Commitment";
 import Segments from "@/components/Segments";
 import Pedagogy from "@/components/Pedagogy";
@@ -18,6 +19,7 @@ const Index = () => {
         <Hero />
         <About />
         <Leadership />
+        <Chaplaincy />
         <Commitment />
         <Segments />
         <Pedagogy />
