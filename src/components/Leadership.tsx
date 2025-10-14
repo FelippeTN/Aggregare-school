@@ -58,7 +58,7 @@ const Leadership = () => {
 
             <CardContent className="p-8 md:p-12">
               <div className="grid md:grid-cols-2 gap-10">
-                <div className="space-y-6">
+                <div className="flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-cyan-blue rounded-full flex items-center justify-center">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@ const Leadership = () => {
                     <h5 className="text-lg font-bold text-slate-800">Formação Acadêmica</h5>
                   </div>
                   
-                  <ul className="space-y-3 text-slate-700">
+                  <ul className="space-y-3 text-slate-700 min-h-[160px]">
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-cyan-blue rounded-full mt-2 flex-shrink-0"></div>
                       <span className="font-medium">Doutor em Estudos de Linguagem pela UFF</span>
@@ -84,14 +84,14 @@ const Leadership = () => {
                     </li>
                   </ul>
                   
-                  <p className="text-slate-600 leading-relaxed pt-4 border-t border-slate-200">
+                  <p className="text-slate-600 leading-relaxed pt-4 border-t border-slate-200 mt-auto">
                     Especialista em educação com vasta experiência em gestão acadêmica 
                     e desenvolvimento curricular, unindo conhecimento pedagógico avançado 
                     com sólida formação teológica.
                   </p>
                 </div>
 
-                <div className="space-y-6">
+                <div className="flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,10 +101,10 @@ const Leadership = () => {
                     <h5 className="text-lg font-bold text-slate-800">Formação e Experiência</h5>
                   </div>
                   
-                  <ul className="space-y-3 text-slate-700">
+                  <ul className="space-y-3 text-slate-700 min-h-[160px]">
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="font-medium">Psicóloga formada pelo Albert Einstein</span>
+                      <span className="font-medium">Psicóloga clínica e hospitalar</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
@@ -112,11 +112,15 @@ const Leadership = () => {
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="font-medium">Especialista em Psicologia hospitalar pelo Hospital Albert Einstein</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="font-medium">15+ anos de experiência em saúde mental</span>
                     </li>
                   </ul>
                   
-                  <p className="text-slate-600 leading-relaxed pt-4 border-t border-slate-200">
+                  <p className="text-slate-600 leading-relaxed pt-4 border-t border-slate-200 mt-auto">
                     Sua expertise em saúde mental e desenvolvimento humano enriquece 
                     significativamente nosso ambiente de acolhimento e cuidado integral 
                     com os estudantes e suas famílias.
