@@ -33,7 +33,7 @@ interface Partnership {
 }
 const defaultPartnerships: Partnership[] = [
   { name: "ACSI Brasil", description: "Association of Christian Schools International - Padrão internacional de qualidade educacional cristã", logo: "🏆", url: "https://www.acsi.org/" },
-  { name: "Your Company School", description: "Parceiro estratégico em soluções educacionais", logo: "🏫", url: "https://example.com/" },
+  { name: "Your Company School", description: "Parceiro estratégico em soluções educacionais", logo: "🏫", url: "https://www.instagram.com/cursoycs/" },
   { name: "Bernoulli", description: "Sistema de ensino com excelência acadêmica", logo: "📘", url: "https://www.bernoulli.com.br/" },
   { name: "Sae Digital", description: "Plataforma educacional digital inovadora", logo: "💡", url: "https://sae.digital/" },
   { name: "Evolucional", description: "Soluções em avaliação e desempenho educacional", logo: "📊", url: "https://evolucional.com.br/" },
